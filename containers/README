@@ -1,0 +1,8 @@
+# FATES Tutorial Docker Image
+
+This docker image uses official Jupyter stack images as it's base.
+
+Build command: 
+```
+docker buildx build --tag=name .
+```
