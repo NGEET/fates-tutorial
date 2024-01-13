@@ -47,9 +47,12 @@ RUN cd /home/${NB_USER} \
 # Get the jupyter notebooks
 # RUN cd /home/${NB_USER}/notebooks/ \
     # && wget -r -l1 --no-parent -A.ipynb $TUTORIAL_URL/main/fates-tutorial-jupyter-book/
+# Use COPY until repository is public
+RUN cd /home/${NB_USER}/notebooks
+COPY fates-tutorial-jupyter-book/*.ipynb .
 
 # Setup default user when entering
 USER ${NB_UID}
-WORKDIR "${HOME}"
+WORKDIR ${HOME}
 
 # EOF
