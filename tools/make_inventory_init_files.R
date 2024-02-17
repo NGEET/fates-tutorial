@@ -68,10 +68,11 @@ write.csv(patch_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s_%
 #### 3. Make cohorts #### 
 time = rep(plot_year, nrow(df))
 co_df = as.data.frame(time)
-co_df$patch = df$quadrat
+co_df$patch = as.numeric(df$quadrat)
 co_df$dbh = df$dbh  * units # convert from cm to mm
 co_df$height = -3
 co_df$pft = 1
 co_df$nplant = 1/plot_area
 
-write.csv(co_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s_%i.css', plot_name, plot_year))
+write.csv(co_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s_%i.css', plot_name, plot_year), 
+          row.names=FALSE)
