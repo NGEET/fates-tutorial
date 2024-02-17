@@ -22,8 +22,8 @@ export ELM_DOMAIN_DIR=${SITE_BASE_DIR}/${SITE}
 export DIN_LOC_ROOT_FORCE=${SITE_BASE_DIR}
 
 # climate data will recycle data between these years
-export DATM_START=2004
-export DATM_STOP=2014
+export DATM_START=2003
+export DATM_STOP=2013
 
 
 # DEPENDENT PATHS AND VARIABLES (USER MIGHT CHANGE THESE..)
@@ -102,20 +102,20 @@ cd ${CASE_NAME}
 # =================================================================================
 
 ./xmlchange DEBUG=FALSE
-./xmlchange STOP_N=50 # how many years should the simulation run
+./xmlchange STOP_N=20 # how many years should the simulation run
 ./xmlchange RUN_STARTDATE='1900-01-01'
 ./xmlchange STOP_OPTION=nyears
-./xmlchange REST_N=25 # how often to make restart files
-./xmlchange RESUBMIT=1 # how many resubmits 
+./xmlchange REST_N=20 # how often to make restart files
+./xmlchange RESUBMIT=0 # how many resubmits 
 
 ./xmlchange DATM_CLMNCEP_YR_START=${DATM_START}
 ./xmlchange DATM_CLMNCEP_YR_END=${DATM_STOP}
 
-./xmlchange JOB_WALLCLOCK_TIME=02:58:00
-./xmlchange JOB_QUEUE=regular
+#./xmlchange JOB_WALLCLOCK_TIME=02:58:00
+#./xmlchange JOB_QUEUE=regular
 # to run in debug queue - very useful for debugging :) 
-#./xmlchange JOB_WALLCLOCK_TIME=00:29:00
-#./xmlchange JOB_QUEUE=debug
+./xmlchange JOB_WALLCLOCK_TIME=00:29:00
+./xmlchange JOB_QUEUE=debug
 ./xmlchange SAVE_TIMING=FALSE
 
 
