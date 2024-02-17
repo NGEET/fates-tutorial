@@ -47,7 +47,7 @@ time = rep(plot_year, npatches)
 patch_df = as.data.frame(time)
 
 # unique patch code
-patch_df$patch = unique(df$quadrat)
+patch_df$patch = as.numeric(unique(df$quadrat))
 
 # is this patch secondary or primary - 
 # here we assume  primary for all subplots, but if  this information is available  then change
@@ -61,7 +61,8 @@ patch_df$age = rep(0, npatches)
 # fraction of the site occupied by the patch
 patch_df$area = rep((1/npatches), npatches)
 
-write.csv(patch_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s_%i.pss', plot_name, plot_year))
+write.csv(patch_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s_%i.pss', plot_name, plot_year), 
+          row.names=FALSE)
 
 #############################################################################
 #### 3. Make cohorts #### 
@@ -71,6 +72,6 @@ co_df$patch = df$quadrat
 co_df$dbh = df$dbh  * units # convert from cm to mm
 co_df$height = -3
 co_df$pft = 1
-co_df$n = 1/plot_area
+co_df$nplant = 1/plot_area
 
 write.csv(co_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s_%i.css', plot_name, plot_year))
