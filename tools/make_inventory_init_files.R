@@ -61,8 +61,8 @@ patch_df$age = rep(0, npatches)
 # fraction of the site occupied by the patch
 patch_df$area = rep((1/npatches), npatches)
 
-write.csv(patch_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s_%i.pss', plot_name, plot_year), 
-          row.names=FALSE)
+write.table(patch_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s_%i.pss', plot_name, plot_year), 
+          row.names=FALSE, sep = " ")
 
 #############################################################################
 #### 3. Make cohorts #### 
@@ -74,5 +74,5 @@ co_df$height = -3
 co_df$pft = 1
 co_df$nplant = 1/plot_area
 
-write.csv(co_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s_%i.css', plot_name, plot_year), 
-          row.names=FALSE)
+write.table(co_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s_%i.css', plot_name, plot_year), 
+          row.names=FALSE, sep = ' ')
