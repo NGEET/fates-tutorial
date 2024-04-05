@@ -56,7 +56,7 @@ patch_df$patch = as.numeric(unique(df$quadrat))
 patch_df$trk = rep(2, npatches)
 
 # time since the patch was created - can be set to 0
-patch_df$age = rep(0, npatches)
+patch_df$age = rep(0.0, npatches)
 
 # fraction of the site occupied by the patch
 patch_df$area = rep((1/npatches), npatches)
@@ -70,9 +70,16 @@ time = rep(plot_year, nrow(df))
 co_df = as.data.frame(time)
 co_df$patch = as.numeric(df$quadrat)
 co_df$dbh = df$dbh  * units # convert from cm to mm
-co_df$height = -3
+co_df$height = -1.0
 co_df$pft = 1
-co_df$nplant = 1/plot_area
+patch_size=plot_area * 10000 / npatches
+co_df$nplant = 1/patch_size
+
+# check that all trees have a dbh - if not then remove them!
+cut = which(is.na(co_df$dbh)==TRUE)
+if(length(cut) > 0){
+  co_df = co_df[-cut, ]
+}
 
 write.table(co_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s_%i.css', plot_name, plot_year), 
           row.names=FALSE, sep = ' ')
