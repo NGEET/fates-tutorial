@@ -61,7 +61,7 @@ patch_df$age = rep(0.0, npatches)
 # fraction of the site occupied by the patch
 patch_df$area = rep((1/npatches), npatches)
 
-write.table(patch_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s_%i.pss', plot_name, plot_year), 
+write.table(patch_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s/%s_%i.pss', plot_name, plot_name, plot_year), 
           row.names=FALSE, sep = " ")
 
 #############################################################################
@@ -81,5 +81,5 @@ if(length(cut) > 0){
   co_df = co_df[-cut, ]
 }
 
-write.table(co_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s_%i.css', plot_name, plot_year), 
+write.table(co_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s/%s_%i.css', plot_name, plot_name, plot_year), 
           row.names=FALSE, sep = ' ')
