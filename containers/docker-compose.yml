@@ -1,0 +1,40 @@
+name: fates-tutorial
+services:
+  landmodel:
+    image: ngeetropics/elm-builds:elm_v3.0.0-fates_sci.1.76.4_api.35.1.0
+    container_name: elm-fates
+    hostname: docker
+    user: modeluser
+    stdin_open: true
+    tty: true
+    volumes:
+      - type: bind
+        source: /${TUTORIAL_DIR}/run_scripts/
+        target: /scripts
+      - type: bind
+        source: /${TUTORIAL_DIR}/param_files/
+        target: /paramfiles
+      - type: bind
+        source: /${TUTORIAL_DIR}/inventory_data/
+        target: /inventorydata
+      - ${INPUT_DATA}:/inputdata
+      - modeloutput:/output
+  notebook:
+    image: ngeetropics/fates-tutorial-jupyter:latest
+    container_name: tutorial-notebook
+    ports:
+      - 8888:8888
+    volumes:
+      - type: bind
+        source: /${TUTORIAL_DIR}/fates-tutorial-jupyter-book/
+        target: /home/${NB_USER}/notebooks
+      - type: bind
+        source: /${TUTORIAL_DIR}/run_scripts/
+        target: /home/${NB_USER}/paramfiles
+      - type: bind
+        source: /${TUTORIAL_DIR}/inventory_data/
+        target: /home/${NB_USER}/inventorydata
+      - ${INPUT_DATA}:/home/${NB_USER}/inputdata
+      - modeloutput:/home/${NB_USER}/output
+volumes:
+  modeloutput:
