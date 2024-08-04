@@ -33,6 +33,7 @@ RUN mkdir "/home/${NB_USER}/scripts" \
     && fix-permissions "/home/${NB_USER}/scripts" \
     && fix-permissions "/home/${NB_USER}/notebooks" \
     && fix-permissions "/home/${NB_USER}/inputdata" \
+    && fix-permissions "/home/${NB_USER}/inventorydata" \
     && fix-permissions "/home/${NB_USER}/output" \
     && fix-permissions "/home/${NB_USER}"
 
