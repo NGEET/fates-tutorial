@@ -15,7 +15,7 @@ export PARAM_FILES=/paramfiles            # FATES parameter file location
 
 # this whole section needs to be updated with the location of your surface and domain files
 #export SITE_BASE_DIR=/global/cfs/cdirs/m2420/fates-tutorial-2024/fates-tutorial/met_data
-export SITE_BASE_DIR=/inputdata
+export SITE_BASE_DIR=/inputdata/met_data
 export ELM_USRDAT_DOMAIN=domain_bci_fates_tutorial.nc
 export ELM_USRDAT_SURDAT=surfdata_bci_fates_tutorial.nc
 export ELM_SURFDAT_DIR=${SITE_BASE_DIR}/${SITE}
@@ -37,7 +37,7 @@ cd ${SOURCE_DIR}
 # export ELM_HASH=`(cd  ../../components/elm/src;git log -n 1 --pretty=%h)`
 # export FATES_HASH=`(cd ../../components/elm/src/external_models/fates;git log -n 1 --pretty=%h)`
 # export GIT_HASH=E${ELM_HASH}-F${FATES_HASH}
-export CASE_NAME=${CASE_ROOT}/${TAG}.`date +"%Y-%m-%d"`
+export CASE_NAME=${CASE_ROOT}/${TAG}.`date +"%Y-%m-%d-%H%M%s"`
 
 
 # REMOVE EXISTING CASE IF PRESENT
@@ -166,4 +166,4 @@ EOF
 cp  run/datm.streams.txt.CLM1PT.ELM_USRDAT user_datm.streams.txt.CLM1PT.ELM_USRDAT
 
 ./case.build --skip-provenance-check # build the run (skipping provenance avoids calling git)
-./case.submit # submit the job to slurm 
+#./case.submit # submit the job to slurm
