@@ -1,6 +1,5 @@
 # Instructions
-# 1. Add the local directory corresponding to where you have cloned the fates-tutorial repository
+# 1. Add the local directory corresponding to where you have located your input data.  Leave "jovyan" as NB_USER.
 # 2. Save the file and rename the file to ".env"
-TUTORIAL_DIR=
 INPUT_DATA=
 NB_USER=jovyan
