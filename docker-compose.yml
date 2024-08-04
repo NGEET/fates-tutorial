@@ -9,13 +9,13 @@ services:
     tty: true
     volumes:
       - type: bind
-        source: /${TUTORIAL_DIR}/run_scripts/
+        source: run_scripts
         target: /scripts
       - type: bind
-        source: /${TUTORIAL_DIR}/param_files/
+        source: param_files
         target: /paramfiles
       - type: bind
-        source: /${TUTORIAL_DIR}/inventory_data/
+        source: inventory_data
         target: /inventorydata
       - ${INPUT_DATA}:/inputdata
       - modeloutput:/output
@@ -26,13 +26,13 @@ services:
       - 8888:8888
     volumes:
       - type: bind
-        source: /${TUTORIAL_DIR}/fates-tutorial-jupyter-book/
+        source: fates-tutorial-jupyter-book/
         target: /home/${NB_USER}/notebooks
       - type: bind
-        source: /${TUTORIAL_DIR}/run_scripts/
+        source: run_scripts/
         target: /home/${NB_USER}/paramfiles
       - type: bind
-        source: /${TUTORIAL_DIR}/inventory_data/
+        source: inventory_data/
         target: /home/${NB_USER}/inventorydata
       - ${INPUT_DATA}:/home/${NB_USER}/inputdata
       - modeloutput:/home/${NB_USER}/output
