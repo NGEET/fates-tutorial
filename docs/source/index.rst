@@ -18,3 +18,26 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+
+Introduction to Docker
+^^^^^^^^^^^^^^^^^^^^^^
+Here Greg explains how to  install Docker and set  up the example FATES run
+
+
+
+Inventory Initialization Files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Here Jessie explains the inventory initialization files
+
+
+
+Run Scripts and Terminal Commands
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Here Jessie  explains the script that  launches FATES and how to run it
+
+
+
+Modifying Parameter Files
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Here Jessie explains how  to modify parameter files
