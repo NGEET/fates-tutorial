@@ -10,7 +10,7 @@ export PROJECT=m2420                                           # change to your 
 export SITE=bci
 
 
-export TAG=fates-tutorial-${SITE}                                  # give your run a name
+export TAG=fates-tutorial-${SITE}-inventory_init                                  # give your run a name
 export CASE_ROOT=/pscratch/sd/j/jneedham/elm_runs/fates-tute-runs/${SITE}          # where in scratch should the run go?
 
 # this whole section needs to be updated with the location of your surface and domain files
@@ -22,8 +22,8 @@ export ELM_DOMAIN_DIR=${SITE_BASE_DIR}/${SITE}
 export DIN_LOC_ROOT_FORCE=${SITE_BASE_DIR}
 
 # climate data will recycle data between these years
-export DATM_START=2004
-export DATM_STOP=2014
+export DATM_START=2003
+export DATM_STOP=2013
 
 
 # DEPENDENT PATHS AND VARIABLES (USER MIGHT CHANGE THESE..)
@@ -102,20 +102,20 @@ cd ${CASE_NAME}
 # =================================================================================
 
 ./xmlchange DEBUG=FALSE
-./xmlchange STOP_N=5 # how many years should the simulation run
+./xmlchange STOP_N=20 # how many years should the simulation run
 ./xmlchange RUN_STARTDATE='1900-01-01'
 ./xmlchange STOP_OPTION=nyears
-./xmlchange REST_N=5 # how often to make restart files
+./xmlchange REST_N=20 # how often to make restart files
 ./xmlchange RESUBMIT=0 # how many resubmits 
 
 ./xmlchange DATM_CLMNCEP_YR_START=${DATM_START}
 ./xmlchange DATM_CLMNCEP_YR_END=${DATM_STOP}
 
-#./xmlchange JOB_WALLCLOCK_TIME=02:58:00
-#./xmlchange JOB_QUEUE=regular
+./xmlchange JOB_WALLCLOCK_TIME=02:58:00
+./xmlchange JOB_QUEUE=shared
 # to run in debug queue - very useful for debugging :) 
-./xmlchange JOB_WALLCLOCK_TIME=00:29:00
-./xmlchange JOB_QUEUE=debug
+#./xmlchange JOB_WALLCLOCK_TIME=00:29:00
+#./xmlchange JOB_QUEUE=debug
 ./xmlchange SAVE_TIMING=FALSE
 
 
@@ -134,8 +134,10 @@ cd ${CASE_NAME}
 # add any history variables you want 
 cat >> user_nl_elm <<EOF
 fsurdat = '${ELM_SURFDAT_DIR}/${ELM_USRDAT_SURDAT}'
-fates_paramfile='/global/cfs/cdirs/m2420/fates-tutorial-2024/fates-tutorial/param_files/fates_params_default-1pft.nc' 
+fates_paramfile='/global/cfs/cdirs/m2420/fates-tutorial-2024/fates-tutorial/param_files/fates_params_1pft.nc' 
 use_fates=.true.
+use_fates_inventory_init = .true.
+fates_inventory_ctrl_filename = '/global/cfs/cdirs/m2420/fates-tutorial-2024/fates-tutorial/inventory_data/bci/fates_bci_inventory_ctrl'
 hist_fincl1=
 'FATES_VEGC_PF', 'FATES_VEGC_ABOVEGROUND', 
 'FATES_NPLANT_SZ', 'FATES_CROWNAREA_PF', 
@@ -148,7 +150,10 @@ hist_fincl1=
 'FATES_MORTALITY_USTORY_SZPF', 'FATES_NPLANT_SZPF',
 'FATES_NPLANT_CANOPY_SZPF', 'FATES_NPLANT_USTORY_SZPF',
 'FATES_NPP_PF', 'FATES_GPP_PF', 'FATES_NEP', 'FATES_FIRE_CLOSS',
-'FATES_ABOVEGROUND_PROD_SZPF', 'FATES_ABOVEGROUND_MORT_SZPF'
+'FATES_ABOVEGROUND_PROD_SZPF', 'FATES_ABOVEGROUND_MORT_SZPF', 
+'FATES_NPLANT_CANOPY_SZ', 'FATES_NPLANT_USTORY_SZ', 
+'FATES_DDBH_CANOPY_SZ', 'FATES_DDBH_USTORY_SZ', 
+'FATES_MORTALITY_CANOPY_SZ', 'FATES_MORTALITY_USTORY_SZ'
 use_fates_nocomp=.false.                                                                                    
 use_fates_logging=.false.
 fates_parteh_mode = 1
@@ -165,3 +170,4 @@ cp  run/datm.streams.txt.CLM1PT.ELM_USRDAT user_datm.streams.txt.CLM1PT.ELM_USRD
 
 ./case.build # build the run
 ./case.submit # submit the job to slurm 
+
