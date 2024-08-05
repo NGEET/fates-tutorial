@@ -1,0 +1,6 @@
+# Documentation build
+/docs/build
+
+# docker
+.env
+

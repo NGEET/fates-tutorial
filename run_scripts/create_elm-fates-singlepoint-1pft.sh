@@ -4,17 +4,18 @@
 export CIME_MODEL=e3sm
 export COMPSET=2000_DATM%QIA_ELM%BGC-FATES_SICE_SOCN_SROF_SGLC_SWAV  
 export RES=ELM_USRDAT                                
-export MACH=pm-cpu                                             # Name your machine
+export MACH=docker                                             # Name your machine
 export COMPILER=gnu                                            # Name your compiler
 export PROJECT=m2420                                           # change to your project
 export SITE=bci
 
-
-export TAG=fates-tutorial-${SITE}                                  # give your run a name
-export CASE_ROOT=/pscratch/sd/j/jneedham/elm_runs/fates-tute-runs/${SITE}          # where in scratch should the run go?
+export TAG=fates-tutorial-${SITE}         # give your run a name
+export CASE_ROOT=/output/${SITE}          # where in scratch should the run go?
+export PARAM_FILES=/paramfiles            # FATES parameter file location
 
 # this whole section needs to be updated with the location of your surface and domain files
-export SITE_BASE_DIR=/global/cfs/cdirs/m2420/fates-tutorial-2024/fates-tutorial/met_data
+#export SITE_BASE_DIR=/global/cfs/cdirs/m2420/fates-tutorial-2024/fates-tutorial/met_data
+export SITE_BASE_DIR=/inputdata/met_data
 export ELM_USRDAT_DOMAIN=domain_bci_fates_tutorial.nc
 export ELM_USRDAT_SURDAT=surfdata_bci_fates_tutorial.nc
 export ELM_SURFDAT_DIR=${SITE_BASE_DIR}/${SITE}
@@ -28,14 +29,15 @@ export DATM_STOP=2014
 
 # DEPENDENT PATHS AND VARIABLES (USER MIGHT CHANGE THESE..)
 # =======================================================================================
-export SOURCE_DIR=/global/homes/j/jneedham/E3SM-tutorial/E3SM/cime/scripts  # change to the path where your E3SM/cime/sripts is
+export SOURCE_DIR=/E3SM/cime/scripts  # change to the path where your E3SM/cime/sripts is
 cd ${SOURCE_DIR}
 
-export CIME_HASH=`git log -n 1 --pretty=%h`
-export ELM_HASH=`(cd  ../../components/elm/src;git log -n 1 --pretty=%h)`
-export FATES_HASH=`(cd ../../components/elm/src/external_models/fates;git log -n 1 --pretty=%h)`
-export GIT_HASH=E${ELM_HASH}-F${FATES_HASH}
-export CASE_NAME=${CASE_ROOT}/${TAG}.${GIT_HASH}.`date +"%Y-%m-%d"`
+# elm-fates container does not have git activated
+# export CIME_HASH=`git log -n 1 --pretty=%h`
+# export ELM_HASH=`(cd  ../../components/elm/src;git log -n 1 --pretty=%h)`
+# export FATES_HASH=`(cd ../../components/elm/src/external_models/fates;git log -n 1 --pretty=%h)`
+# export GIT_HASH=E${ELM_HASH}-F${FATES_HASH}
+export CASE_NAME=${CASE_ROOT}/${TAG}.`date +"%Y-%m-%d-%H%M%s"`
 
 
 # REMOVE EXISTING CASE IF PRESENT
@@ -115,7 +117,7 @@ cd ${CASE_NAME}
 #./xmlchange JOB_QUEUE=regular
 # to run in debug queue - very useful for debugging :) 
 ./xmlchange JOB_WALLCLOCK_TIME=00:29:00
-./xmlchange JOB_QUEUE=debug
+# ./xmlchange JOB_QUEUE=debug
 ./xmlchange SAVE_TIMING=FALSE
 
 
@@ -134,7 +136,7 @@ cd ${CASE_NAME}
 # add any history variables you want 
 cat >> user_nl_elm <<EOF
 fsurdat = '${ELM_SURFDAT_DIR}/${ELM_USRDAT_SURDAT}'
-fates_paramfile='/global/cfs/cdirs/m2420/fates-tutorial-2024/fates-tutorial/param_files/fates_params_default-1pft.nc' 
+fates_paramfile='${PARAM_FILES}/fates_params_default-1pft.nc'
 use_fates=.true.
 hist_fincl1=
 'FATES_VEGC_PF', 'FATES_VEGC_ABOVEGROUND', 
@@ -163,5 +165,5 @@ EOF
 
 cp  run/datm.streams.txt.CLM1PT.ELM_USRDAT user_datm.streams.txt.CLM1PT.ELM_USRDAT
 
-./case.build # build the run
-./case.submit # submit the job to slurm 
+./case.build --skip-provenance-check # build the run (skipping provenance avoids calling git)
+#./case.submit # submit the job to slurm
