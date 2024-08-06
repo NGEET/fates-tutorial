@@ -6,18 +6,17 @@ export COMPSET=2000_DATM%QIA_ELM%BGC-FATES_SICE_SOCN_SROF_SGLC_SWAV
 export RES=ELM_USRDAT                                
 export MACH=docker                                             # Name your machine
 export COMPILER=gnu                                            # Name your compiler
-export PROJECT=m2420                                           # change to your project
-export SITE=bci
+export SITE=bci                                                # Name your site
 
 export TAG=fates-tutorial-${SITE}-inventory_init  # give your run a name
 export CASE_ROOT=/output/${SITE}                  # where in scratch should the run go?
 export PARAM_FILES=/paramfiles                    # FATES parameter file location
-export INVENTORY_FILES=/inventorydata             # FATES parameter file location
+export INVENTORY_FILES=/inventory_data/${SITE}     # FATES inventory data file location
 
 # this whole section needs to be updated with the location of your surface and domain files
 export SITE_BASE_DIR=/inputdata
-export ELM_USRDAT_DOMAIN=domain_bci_fates_tutorial.nc
-export ELM_USRDAT_SURDAT=surfdata_bci_fates_tutorial.nc
+export ELM_USRDAT_DOMAIN=domain_${SITE}_fates_tutorial.nc
+export ELM_USRDAT_SURDAT=surfdata_${SITE}_fates_tutorial.nc
 export ELM_SURFDAT_DIR=${SITE_BASE_DIR}/${SITE}
 export ELM_DOMAIN_DIR=${SITE_BASE_DIR}/${SITE}
 export DIN_LOC_ROOT_FORCE=${SITE_BASE_DIR}
@@ -113,22 +112,10 @@ cd ${CASE_NAME}
 ./xmlchange DATM_CLMNCEP_YR_END=${DATM_STOP}
 
 
-# to run a full simulation
-./xmlchange JOB_WALLCLOCK_TIME=03:00:00
-./xmlchange JOB_QUEUE=shared 
-# to run in debug queue - very useful for debugging but limited to 30 mins
-#./xmlchange JOB_WALLCLOCK_TIME=00:29:00
-#./xmlchange JOB_QUEUE=debug
-./xmlchange SAVE_TIMING=FALSE
-
-
 # MACHINE SPECIFIC, AND/OR USER PREFERENCE CHANGES (USERS WILL CHANGE THESE)
 # =================================================================================
 
 ./xmlchange GMAKE=make
-#./xmlchange DOUT_S_SAVE_INTERIM_RESTART_FILES=FALSE
-#./xmlchange DOUT_S=TRUE
-#./xmlchange DOUT_S_ROOT=${CASE_NAME}/run
 ./xmlchange RUNDIR=${CASE_NAME}/run
 ./xmlchange EXEROOT=${CASE_NAME}/bld
 
@@ -140,7 +127,7 @@ fsurdat = '${ELM_SURFDAT_DIR}/${ELM_USRDAT_SURDAT}'
 fates_paramfile='${PARAM_FILES}/fates_params_default-1pft.nc'
 use_fates=.true.
 use_fates_inventory_init = .true.
-fates_inventory_ctrl_filename = '/global/cfs/cdirs/m2420/fates-tutorial-2024/fates-tutorial/inventory_data/bci/fates_bci_inventory_ctrl'
+fates_inventory_ctrl_filename = '${INVENTORY_FILES}/fates_${SITE}_inventory_ctrl'
 hist_fincl1=
 'FATES_VEGC_PF', 'FATES_VEGC_ABOVEGROUND', 
 'FATES_NPLANT_SZ', 'FATES_CROWNAREA_PF', 
@@ -157,9 +144,6 @@ hist_fincl1=
 'FATES_NPLANT_CANOPY_SZ', 'FATES_NPLANT_USTORY_SZ', 
 'FATES_DDBH_CANOPY_SZ', 'FATES_DDBH_USTORY_SZ', 
 'FATES_MORTALITY_CANOPY_SZ', 'FATES_MORTALITY_USTORY_SZ'
-use_fates_nocomp=.false.                                                                                    
-use_fates_logging=.false.
-fates_parteh_mode = 1
 EOF
 	 
 cat >> user_nl_datm <<EOF
@@ -172,5 +156,5 @@ EOF
 cp  run/datm.streams.txt.CLM1PT.ELM_USRDAT user_datm.streams.txt.CLM1PT.ELM_USRDAT
 
 ./case.build --skip-provenance-check # build the run (skipping provenance avoids calling git)
-./case.submit # submit the job to slurm 
+./case.submit 
 
