@@ -17,7 +17,7 @@ Modifying the Parameter File demonstrates tools for making custom parameter file
 
    docker_introduction
    inventory_init
-   run_scripts
+   create_scripts
    parameter_file_tools
 
 
