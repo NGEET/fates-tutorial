@@ -33,9 +33,8 @@ fates_pftname =
   "c4_grass                                   " ;
 ```
 
-Since we are running FATES at a tropical site we don't want most of these PFTs to be
-present since they are temperate and arctic PFTs. We can use the python script
-FatesPFTIndexSwapper.py to make a new parameter file that only contains the 
+Since we are running FATES at a tropical site we don't want the temperate and  arctic PFTs to be.
+We can use the python script FatesPFTIndexSwapper.py to make a new parameter file that only contains the 
 tropical tree PFT that we  want in our simulations. We run this script from the command line
 and provide three arguments, --fin  - the original parameter file, --fout - the new parameter
 file, and --pft-indices - the index of the PFTs that  we want, in this case 1. 

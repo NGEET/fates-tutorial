@@ -2,7 +2,7 @@
 
 The `create_fates_run.sh` script is a set of instructions specifying the configuration of the FATES run.
 An example script is found under run_scripts.  To run the create script and launch a FATES simualtion
-we  open a terminal window, change directory to the directory where the script is located and then type: 
+we open a terminal window, change directory to the directory where the script is located and then type: 
 
 ```
 ./create_elm-fatese-singlepoint-1pft_bci_invinit.sh
@@ -239,3 +239,14 @@ And that is it! We are ready to build the run and launch it with the following t
 ./case.build --skip-provenance-check # build the run (skipping provenance avoids calling git)
 ./case.submit
 ```
+
+To kick off the simulation we run the create script from the command line. Open a  terminal  
+window and run: 
+
+```
+./create_elm-fatese-singlepoint-1pft_bci_invinit.sh
+```
+
+A lot of text will go zooming by as the code is compiled and the case is built. 
+To see if it has  worked you can change directory to the case and watch  the
+.elm.h0. files appear.
