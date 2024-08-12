@@ -18,6 +18,7 @@ Modifying the Parameter File demonstrates tools for making custom parameter file
    docker_introduction
    inventory_init
    create_scripts
+   new_site
    parameter_file_tools
 
 

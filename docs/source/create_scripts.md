@@ -250,3 +250,7 @@ window and run:
 A lot of text will go zooming by as the code is compiled and the case is built. 
 To see if it has  worked you can change directory to the case and watch  the
 .elm.h0. files appear.
+
+
+To visualize results from the run go to your jupyter notebook lesson 3. There are both
+python and R versions of this lesson so use whichever one you feel more comfortable with. 

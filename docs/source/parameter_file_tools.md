@@ -45,3 +45,30 @@ file, and --pft-indices - the index of the PFTs that  we want, in this case 1.
 
 This generates a parameter file with a single PFT. Try converting the .nc file to a .cdl file you can
 open and then check to see if it worked. 
+
+It is also possible to make a parameter file with two copies of a PFT. This is useful if we want to make
+a parameter file with two PFTs that grow in the same place  but vary in their traits. In lesson five want
+to run FATES at each of our sites with two competing  PFTs, an early successional and a late succesional. 
+
+To do this we run the same script as above but we specify that we want pft 1 repeated.
+
+```
+./FatesPFTIndexSwapper.py --fin=fates_params_default.nc --fout=fates_params_2pfts.nc --pft-indices=1,1
+```
+
+Now turn that new file into a .cdl file that is human readable using the NCO scripts described above: 
+
+```
+ncdump fates_params_2pfts.nc > fates_params_2pfts.cdl
+```
+
+Now you can open the file using your favourite text editor and make  changes to one or both of the PFTs. 
+Keep in mind  the trade-offs we discussed earlier. 
+
+When you have finished editing your parameter  file make a .nc version using ncgen. 
+
+```
+ncgen -o fates_params_2pfts.nc fates_params_2pfts.cdl
+```
+
+Be sure to point to this new parameter file in your create script!!! 
