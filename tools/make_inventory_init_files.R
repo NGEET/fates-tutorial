@@ -19,7 +19,7 @@ library(stringi)
 #############################################################################
 #### 1. Load Data ####
 # Load the plot data
-load('/Users/JFNeedham/fates-tutorial/inventory_data/bci.tree8.rdata')
+load('/Users/JFNeedham/Desktop/Inventory_initialisation_ForestGEO_to_FATES/bci.tree8.rdata')
 df_full = bci.tree8  
 
 #### 2. Remove dead trees ####
@@ -69,7 +69,7 @@ write.table(patch_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s
 time = rep(plot_year, nrow(df))
 co_df = as.data.frame(time)
 co_df$patch = as.numeric(df$quadrat)
-co_df$dbh = df$dbh  * units # convert from cm to mm
+co_df$dbh = df$dbh  * units 
 co_df$height = -1.0
 co_df$pft = 1
 patch_size=plot_area * 10000 / npatches

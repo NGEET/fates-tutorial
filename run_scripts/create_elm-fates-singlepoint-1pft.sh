@@ -6,7 +6,7 @@ export COMPSET=2000_DATM%QIA_ELM%BGC-FATES_SICE_SOCN_SROF_SGLC_SWAV
 export RES=ELM_USRDAT                                
 export MACH=docker                                             # Name your machine
 export COMPILER=gnu                                            # Name your compiler
-export PROJECT=e3sm                                           # change to your project
+export PROJECT=m2420                                           # change to your project
 export SITE=bci
 
 export TAG=fates-tutorial-${SITE}         # give your run a name
