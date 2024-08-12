@@ -8,7 +8,7 @@
 
 project = "Tutorial User's Guide"
 copyright = '2024, Lawrence Berkeley National Laboratory'
-author = 'Gregory Lemieux'
+author = 'Jessica Needham and Gregory Lemieux'
 
 release = '0.0'
 version = '0.0.0'
