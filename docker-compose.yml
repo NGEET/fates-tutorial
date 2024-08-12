@@ -1,9 +1,13 @@
 name: fates-tutorial
 services:
   elmdata:
-    image: ngeetropics/data-elm-default:latest
+    image: ngeetropics/data-elm-default:next
     volumes:
       - elm-inputdata:/inputdata
+  sitedata:
+    image: bcitest
+    volumes:
+      - site_data:/site_data
   landmodel:
     image: ngeetropics/elm-builds:elm_v3.0.0-fates_sci.1.76.4_api.35.1.0
     container_name: elm-fates
@@ -23,6 +27,7 @@ services:
         target: /inventorydata
       - modeloutput:/output
       - elm-inputdata:/inputdata
+      - site_data:/sitedata
   notebook:
     image: ngeetropics/fates-tutorial-jupyter:latest
     container_name: tutorial-notebook
@@ -43,3 +48,4 @@ services:
 volumes:
   modeloutput:
   elm-inputdata:
+  site_data:

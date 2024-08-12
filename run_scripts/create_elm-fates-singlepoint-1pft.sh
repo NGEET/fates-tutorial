@@ -154,6 +154,7 @@ hist_fincl1=
 use_fates_nocomp=.false.                                                                                    
 use_fates_logging=.false.
 fates_parteh_mode = 1
+fluh_timeseries = ''
 EOF
 	 
 cat >> user_nl_datm <<EOF
