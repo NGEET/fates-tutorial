@@ -24,7 +24,7 @@ ENV TUTORIAL_URL=https://raw.githubusercontent.com/NGEET/fates-tutorial
 # Run in debug mode and stop if non-zero status returned
 RUN echo "Installing additional conda packages"
 RUN set -ex \
-    && conda install -q -y xarray r-ncdf4\
+    && conda install -q -y xarray r-ncdf4 netcdf4\
     # clean up post install
     && conda clean --all -f -y \
     # use jupyter supplied script to git user read-write
