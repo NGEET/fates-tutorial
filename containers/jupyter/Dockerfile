@@ -15,11 +15,16 @@ LABEL maintainer.name="Gregory Lemieux" \
 # Github repo raw url
 ENV TUTORIAL_URL=https://raw.githubusercontent.com/NGEET/fates-tutorial
 
+# Install HDF5 and NETCDF4 libraries
+# USER root
+# RUN apt-get update -y && \
+#     apt-get install -y netcdf-bin
+
 # Install additional packages
 # Run in debug mode and stop if non-zero status returned
 RUN echo "Installing additional conda packages"
 RUN set -ex \
-    && conda install -q -y xarray \
+    && conda install -q -y xarray r-ncdf4\
     # clean up post install
     && conda clean --all -f -y \
     # use jupyter supplied script to git user read-write
