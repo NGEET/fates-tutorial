@@ -29,6 +29,7 @@ RUN set -ex \
 RUN mkdir "/home/${NB_USER}/scripts" \
     && mkdir "/home/${NB_USER}/notebooks" \
     && mkdir "/home/${NB_USER}/inputdata" \
+    && mkdir "/home/${NB_USER}/inventorydata" \
     && mkdir "/home/${NB_USER}/output" \
     && fix-permissions "/home/${NB_USER}/scripts" \
     && fix-permissions "/home/${NB_USER}/notebooks" \
@@ -49,8 +50,8 @@ RUN cd /home/${NB_USER} \
 # RUN cd /home/${NB_USER}/notebooks/ \
     # && wget -r -l1 --no-parent -A.ipynb $TUTORIAL_URL/main/fates-tutorial-jupyter-book/
 # Use COPY until repository is public
-RUN cd /home/${NB_USER}/notebooks
-COPY fates-tutorial-jupyter-book .
+#RUN cd /home/${NB_USER}/notebooks
+COPY fates-tutorial-jupyter-book /home/${NB_USER}/notebooks
 
 # Setup default user when entering
 USER ${NB_UID}

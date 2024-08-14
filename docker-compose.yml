@@ -31,6 +31,10 @@ services:
   notebook:
     image: ngeetropics/fates-tutorial-jupyter:latest
     container_name: tutorial-notebook
+    # user: $UID
+    # environment:
+    #   CHOWN_HOME: yes
+    #   CHOWN_HOME_OPTS: "-R"
     ports:
       - 8888:8888
     volumes:
