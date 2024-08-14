@@ -1,10 +1,12 @@
 name: fates-tutorial
 services:
   elmdata:
+    container_name: data-elm-default
     image: ngeetropics/data-elm-default:latest
     volumes:
       - elm-inputdata:/inputdata
   sitedata:
+    container_name: data-bci
     image: ngeetropics/data-bci:latest
     volumes:
       - site_data:/site_data
@@ -43,6 +45,9 @@ services:
         target: /home/${NB_USER}/notebooks
       - type: bind
         source: run_scripts/
+        target: /home/${NB_USER}/scripts
+      - type: bind
+        source: param_files/
         target: /home/${NB_USER}/paramfiles
       - type: bind
         source: inventory_data/
