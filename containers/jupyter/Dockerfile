@@ -15,11 +15,16 @@ LABEL maintainer.name="Gregory Lemieux" \
 # Github repo raw url
 ENV TUTORIAL_URL=https://raw.githubusercontent.com/NGEET/fates-tutorial
 
+# Install HDF5 and NETCDF4 libraries
+# USER root
+# RUN apt-get update -y && \
+#     apt-get install -y netcdf-bin
+
 # Install additional packages
 # Run in debug mode and stop if non-zero status returned
 RUN echo "Installing additional conda packages"
 RUN set -ex \
-    && conda install -q -y xarray \
+    && conda install -q -y xarray r-ncdf4 netcdf4\
     # clean up post install
     && conda clean --all -f -y \
     # use jupyter supplied script to git user read-write
@@ -29,6 +34,7 @@ RUN set -ex \
 RUN mkdir "/home/${NB_USER}/scripts" \
     && mkdir "/home/${NB_USER}/notebooks" \
     && mkdir "/home/${NB_USER}/inputdata" \
+    && mkdir "/home/${NB_USER}/inventorydata" \
     && mkdir "/home/${NB_USER}/output" \
     && fix-permissions "/home/${NB_USER}/scripts" \
     && fix-permissions "/home/${NB_USER}/notebooks" \
@@ -49,8 +55,8 @@ RUN cd /home/${NB_USER} \
 # RUN cd /home/${NB_USER}/notebooks/ \
     # && wget -r -l1 --no-parent -A.ipynb $TUTORIAL_URL/main/fates-tutorial-jupyter-book/
 # Use COPY until repository is public
-RUN cd /home/${NB_USER}/notebooks
-COPY fates-tutorial-jupyter-book .
+#RUN cd /home/${NB_USER}/notebooks
+COPY fates-tutorial-jupyter-book /home/${NB_USER}/notebooks
 
 # Setup default user when entering
 USER ${NB_UID}

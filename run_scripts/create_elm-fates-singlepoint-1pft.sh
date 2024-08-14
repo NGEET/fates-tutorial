@@ -15,7 +15,7 @@ export PARAM_FILES=/paramfiles            # FATES parameter file location
 
 # this whole section needs to be updated with the location of your surface and domain files
 #export SITE_BASE_DIR=/global/cfs/cdirs/m2420/fates-tutorial-2024/fates-tutorial/met_data
-export SITE_BASE_DIR=/inputdata/met_data
+export SITE_BASE_DIR=/sitedata
 export ELM_USRDAT_DOMAIN=domain_bci_fates_tutorial.nc
 export ELM_USRDAT_SURDAT=surfdata_bci_fates_tutorial.nc
 export ELM_SURFDAT_DIR=${SITE_BASE_DIR}/${SITE}
@@ -154,6 +154,7 @@ hist_fincl1=
 use_fates_nocomp=.false.                                                                                    
 use_fates_logging=.false.
 fates_parteh_mode = 1
+fluh_timeseries = ''
 EOF
 	 
 cat >> user_nl_datm <<EOF

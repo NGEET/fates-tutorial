@@ -1,5 +1,15 @@
 name: fates-tutorial
 services:
+  elmdata:
+    container_name: data-elm-default
+    image: ngeetropics/data-elm-default:latest
+    volumes:
+      - elm-inputdata:/inputdata
+  sitedata:
+    container_name: data-bci
+    image: ngeetropics/data-bci:latest
+    volumes:
+      - site_data:/site_data
   landmodel:
     image: ngeetropics/elm-builds:elm_v3.0.0-fates_sci.1.76.4_api.35.1.0
     container_name: elm-fates
@@ -17,11 +27,16 @@ services:
       - type: bind
         source: inventory_data
         target: /inventorydata
-      - ${INPUT_DATA}:/inputdata
       - modeloutput:/output
+      - elm-inputdata:/inputdata
+      - site_data:/sitedata
   notebook:
     image: ngeetropics/fates-tutorial-jupyter:latest
     container_name: tutorial-notebook
+    # user: $UID
+    # environment:
+    #   CHOWN_HOME: yes
+    #   CHOWN_HOME_OPTS: "-R"
     ports:
       - 8888:8888
     volumes:
@@ -30,6 +45,9 @@ services:
         target: /home/${NB_USER}/notebooks
       - type: bind
         source: run_scripts/
+        target: /home/${NB_USER}/scripts
+      - type: bind
+        source: param_files/
         target: /home/${NB_USER}/paramfiles
       - type: bind
         source: inventory_data/
@@ -38,3 +56,5 @@ services:
       - modeloutput:/home/${NB_USER}/output
 volumes:
   modeloutput:
+  elm-inputdata:
+  site_data:
