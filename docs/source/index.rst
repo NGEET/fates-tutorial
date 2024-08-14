@@ -17,12 +17,6 @@ Modifying the Parameter File demonstrates tools for making custom parameter file
    :caption: Contents:
 
    docker_introduction
-   inventory_init
-   create_scripts
-   history_outputs	
-   new_site
-   parameter_file_tools
-
 
 
 Indices and tables
