@@ -1,11 +1,11 @@
 name: fates-tutorial
 services:
   elmdata:
-    image: ngeetropics/data-elm-default:next
+    image: ngeetropics/data-elm-default:latest
     volumes:
       - elm-inputdata:/inputdata
   sitedata:
-    image: bcitest
+    image: ngeetropics/data-bci:latest
     volumes:
       - site_data:/site_data
   landmodel:
