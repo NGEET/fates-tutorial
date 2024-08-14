@@ -7,12 +7,13 @@ Welcome to Tutorial User's Guide Documentation!
 =================================================
 
 This User's Guide will provide details on the topics covered during the tutorial. 
-We begin with an introduction to Docker and setting up the FATES containres. 
-Run Scripts and Model Initialization Modes provide details on setting up a basic FATES simulation using inventory data. 
+We begin with an introduction to Docker and setting up the FATES containers. 
+Model Initialization Modes and Create Scripts provide details on setting up a basic FATES simulation using inventory data. 
+To run FATES at your own study site you can follow instructions in Setting up FATES at a New Site. Finally, 
 Modifying the Parameter File demonstrates tools for making custom parameter files. 
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    docker_introduction

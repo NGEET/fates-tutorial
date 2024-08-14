@@ -27,11 +27,10 @@ df = df_full[df_full$status == 'A', ]
 
 # plot area 
 plot_area = 50
-
 # plot name
 plot_name = 'BCI'
 # plot year
-plot_year = as.numeric(stri_sub(df$ExactDate[1], from = 1, to = 4))
+plot_year = 2015 # when was the census started 
 
 # units - conversion for dbh column - use the below values: 
 # cm - 1
@@ -61,17 +60,27 @@ patch_df$age = rep(0.0, npatches)
 # fraction of the site occupied by the patch
 patch_df$area = rep((1/npatches), npatches)
 
-write.table(patch_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s/%s_%i.pss', plot_name, plot_name, plot_year), 
+### CHANGE THE FILE PATH HERE ###
+write.table(patch_df, sprintf('/Users/JFNeedham/Desktop/%s_%i.pss',  plot_name, plot_year), 
           row.names=FALSE, sep = " ")
 
 #############################################################################
 #### 3. Make cohorts #### 
+
+# time is not used by FATES so just use the census year
 time = rep(plot_year, nrow(df))
 co_df = as.data.frame(time)
+
+# which patch is this cohort in? 
 co_df$patch = as.numeric(df$quadrat)
+# convert dbh to cm
 co_df$dbh = df$dbh  * units 
+# set to a negative number - either dbh or height can be read in 
+# by FATES, the other needs to be negative
 co_df$height = -1.0
+# Assume all trees belong to a single PFT
 co_df$pft = 1
+# Get the number density of cohorts
 patch_size=plot_area * 10000 / npatches
 co_df$nplant = 1/patch_size
 
@@ -81,5 +90,7 @@ if(length(cut) > 0){
   co_df = co_df[-cut, ]
 }
 
-write.table(co_df, sprintf('/Users/JFNeedham/fates-tutorial/inventory_data/%s/%s_%i.css', plot_name, plot_name, plot_year), 
+
+### CHANGE THE FILE PATH HERE ###
+write.table(co_df, sprintf('/Users/JFNeedham/Desktop/%s_%i.css', plot_name, plot_year), 
           row.names=FALSE, sep = ' ')

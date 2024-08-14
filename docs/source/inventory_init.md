@@ -1,8 +1,13 @@
 # Model Initialization Modes
 
+We start this tutorial by running FATES at Barro Colorado Island, Panama, with a single Plant Functional Type (PFT). For this
+first run we will initialize the model with inventory data, meaning the simulation starts with a size structure that matches
+observations. However, there are other ways to initialzie FATES, and so for reference we have described them all here. 
 
-The state of the terrestrial ecosystem in FATES can be initialized in roughly three different ways. In this tutorial we are initializing
-with inventory  data but we describe all three methods for completeness. 
+
+
+The state of the terrestrial ecosystem in FATES can be initialized in roughly three different ways.
+
 
 1. A "restart" simulation: During the initialization phase, the model will read in detailed information of the complete "state" of the FATES model, and its host model 
 (ELM), that was generated during a previous simulation.  A restart simulation should generate bit-for-bit results with the previous simulation in 
@@ -47,16 +52,19 @@ To start a new case completely from scratch do not specify a restart file or poi
 ## Guide for a Cold Start Simulation with Inventory (Case 3) ##
 
 The key element in an inventory initialization, is specifying what inventory data is available and what format the data is provided in.
-The pre-tutorial work should have resulted in your data being correctly formatted. 
+The pre-tutorial work should have resulted in your data being correctly formatted. But for our first run we will use the data from BCI 
+which is publically available from Dryad. We have already downloaded this data and formatted it for FATES. You will find the BCI data
+under inventory_data in your container. 
 
-All of the inventory initialization code is contained in this 
+All of the inventory initialization code in FATES is contained in this 
 file:[main/FatesInventoryInitMod.F90](https://github.com/NGEET/fates/blob/master/main/FatesInventoryInitMod.F90)
 
 
 ## Namelist Entries ##
-
-Two namelist entries are required: a flag that turns on inventory initialization, and the full path to a control file, these entries can be specified in user_nl_elm 
-(described in more  detail in the next section). 
+To tell FATES what configuration we want and which optional modules to turn on, we specify a number of name list options when we set up the case. This will be 
+explained in more detail in the next lesson. For inventory initialization two namelist entries are required: a flag that turns on inventory initialization, and the 
+full path to a control file, these entries can be specified in user_nl_elm 
+(described in more  detail in the next lesson). 
 
 ```
 use_fates_inventory_init = .true.
@@ -66,10 +74,10 @@ fates_inventory_ctrl_filename = '<full path to the control file>'
 
 ## Control File Specification ##
 
-The control file should be text formatted.  It should contain 1 header row. It should contain any number of rows greater than 1, that each specify inventory site data 
+The control file should be text formatted. It should contain 1 header row. It should contain any number of rows greater than 1, that each specify inventory site data 
 that the user would like the model to interperate.  This description of the site data should contain: a format specifier for the data at that site, the latitude and 
-longitude in decimal degrees (both 0-360 and -180 to 180 conventions allowed), and then the full path to both the patch file and the cohort file.  More on format 
-specifications in the next sub-section.  Below is an example of the control file.
+longitude in decimal degrees (both 0-360 and -180 to 180 conventions allowed), and then the full path to both the patch file and the cohort file. Below is an 
+example of the control file.
 
 ```
 TYPE LATITUDE LONGITUDE PSS_PATH CSS_PATH
@@ -99,3 +107,6 @@ TYPE LATITUDE LONGITUDE PSS_PATH CSS_PATH
 | dbh |cm |Stem diameter breast height |
 | pft |integer |Plant Functional Type |
 | n |Stem/m2 |Stem density |
+
+
+In the next section we show you how to set up a FATES run and point to these files for an inventory initialization. 
