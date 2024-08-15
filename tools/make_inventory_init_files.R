@@ -19,7 +19,8 @@ library(stringi)
 #############################################################################
 #### 1. Load Data ####
 # Load the plot data
-load('/Users/JFNeedham/Desktop/Inventory_initialisation_ForestGEO_to_FATES/bci.tree8.rdata')
+#load('/Users/JFNeedham/Desktop/Inventory_initialisation_ForestGEO_to_FATES/bci.tree8.rdata')
+load('FILE_PATH_TO_YOUR_DATA/YOUR_DATA.rdata')
 df_full = bci.tree8  
 
 #### 2. Remove dead trees ####
@@ -61,7 +62,7 @@ patch_df$age = rep(0.0, npatches)
 patch_df$area = rep((1/npatches), npatches)
 
 ### CHANGE THE FILE PATH HERE ###
-write.table(patch_df, sprintf('/Users/JFNeedham/Desktop/%s_%i.pss',  plot_name, plot_year), 
+write.table(patch_df, sprintf('FILE_PATH_TO_YOUR_FOLDER/%s_%i.pss',  plot_name, plot_year), 
           row.names=FALSE, sep = " ")
 
 #############################################################################
@@ -92,5 +93,5 @@ if(length(cut) > 0){
 
 
 ### CHANGE THE FILE PATH HERE ###
-write.table(co_df, sprintf('/Users/JFNeedham/Desktop/%s_%i.css', plot_name, plot_year), 
+write.table(co_df, sprintf('FILE_PATH_TO_YOUR_FOLDER/%s_%i.css', plot_name, plot_year), 
           row.names=FALSE, sep = ' ')

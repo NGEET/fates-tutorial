@@ -1,13 +1,31 @@
 # FATES History Outputs
 
+
+## Concatonating history files
+By default FATES will output monthly files, containing values that are the average value for that month. To visualize the simulation we want to
+read a single file into Python or R, with all the months combined. To do this we use the NCO tool `ncrcat`.
+
+```
+ncrcat -h fates_tag.elm.h0.*.nc  fates_tag.sofar.nc
+```
+
+The -h flag tells `ncrcat` not to copy meta  data from the input files to the new file. The * tells `ncrcat` to combine all files  that have elm.h0.
+in the name, regardless of the date. fates_tag  should be replaced by the full name of your FATES simulation. The new file ending .sofar.nc contains
+the full time  series of the model run and can be loaded into R or Python to make figures.
+
+
+To see examples of R and Python scripts that plot FATES outputs go to the Jupyter book lesson 3.
+
+
+## Changing the output frequency
 By default FATES produces monthly files that record the state of the forest. These are saved in the output directory as elm.h0. files. To 
 change the frequency that the files are written out, or the resolution of the outputs we can change two arguments in the user_nl_elm file
 by editing our create script. The frequency of the history file streams is given by the namelist variable
-hist_nhtfrq. The values of hist_nhtfrq must be integers, where the following values have the given meaning:
+`hist_nhtfrq`. The values of `hist_nhtfrq` must be integers, where the following values have the given meaning:
 Positive value means the output
 frequency is the number of model steps between output. Negative value means the output frequency is the absolute
 value in hours given (i.e -1 would mean an hour and -24 would mean a full day). Zero means the output frequency is monthly.
-The number of samples on each history file stream is given by the namelist variable hist_mfilt. Examples are given in the table below.  
+The number of samples on each history file stream is given by the namelist variable `hist_mfilt`. Examples are given in the table below.  
 
 
 | File frequency | Time stamp | hist_nhtfrq | hist_mfilt | Description |
@@ -24,17 +42,8 @@ The number of samples on each history file stream is given by the namelist varia
 | Ten years      | annualy    | -8760       | 10         | Annual outputs written out every ten years |  
 
 
-By default FATES will output monthly files, containing values that are the average value for that month. To visualize the simulation we want to
-read a single file into Python or R, with all the months combined. To do this we use the NCO tool ncrcat.
 
-```
-ncrcat -h fates_tag.elm.h0.*.nc  fates_tag.sofar.nc
-```
-
-The -h flag tells ncrcat not to copy meta  data from the input files to the new file. The * tells ncrcat to combine all files  that have elm.h0.
-in the name, regardless of the date. fates_tag  should be replaced by the full name of your FATES simulation. The new file ending .sofar.nc contains
-the full time  series of the model run and can be loaded into R or Python to make figures.
-
+## FATES history dimensions
 The history writing code in FATES is contained in this file:
 [main/FatesHistoryInterfaceMod.F90](https://github.com/NGEET/fates/blob/main/main/FatesHistoryInterfaceMod.F90)
 
@@ -44,20 +53,38 @@ per month per grid cell.
 
 Other dimensions are indicated by the ending of the variable name.
 
-_PF - site x pft
-_SZ - site x size
-_SZPF - site x size x pft
-_AP - site x patch age
-_FC - site x fuel class
-_SL - site x soil
-_APFC - site x patch age x fuel class
-_EL - site x element (e.g. Carbon, Nitrogen or Phosphorus)
-_CLLL - site x canopy layer x leaf layer
-_SZAP - site x size x patch age
-_SZAPPF - site x size x patch age x pft
-_APPF - site x patch age x pft
-_DC - site x coarse woody debris class
+| _suffix | Dimension |
+| ------- | --------- |
+| _PF     |  site x pft |
+| _SZ | site x size |
+|_SZPF | site x size x pft | 
+| _AP | site x patch age | 
+| _FC | site x fuel class | 
+| _SL | site x soil |
+| _APFC | site x patch age x fuel class |
+| _EL | site x element (e.g. Carbon, Nitrogen or Phosphorus) |
+| _CLLL | site x canopy layer x leaf layer |
+| _SZAP | site x size x patch age |
+| _SZAPPF | site x size x patch age x pft |
+| _APPF | site x patch age x pft |
+| _DC | site x coarse woody debris class |
 
 
+At the end of the FatesHistoryInterfaceMod.F90 script is a list of all the FATES history ouptuts. An example output looks like this:
 
-To see examples of R and Python scripts that plot  FATES outputs go to the Jupyter book lesson 3. 
+```
+call this%set_history_var(vname='FATES_LEAFMAINTAR',                       &
+            units = 'kg m-2 s-1',                                                &
+            long='leaf maintenance autotrophic respiration in kg carbon per m2 per second', &
+            use_default='active', avgflag='A', vtype=site_r8, hlms='CLM:ALM',    &
+            upfreq=group_hifr_simple, ivar=ivar, initialize=initialize_variables,                &
+            index = ih_leaf_mr_si)
+
+```
+
+`vname` is the variable name that you will use in any post processing.
+`units` tells us what units the output has.
+`long` is a description of the variable.
+`use_default` tells us if the variable is output by default 'active' or if we would need to specify it in the user_nl_elm part
+of the create script.
+`vtype` tells us what dimension the variable has - here just site. 
