@@ -128,6 +128,7 @@ fates_paramfile='${PARAM_FILES}/fates_params_default-1pft.nc'
 use_fates=.true.
 use_fates_inventory_init = .true.
 fates_inventory_ctrl_filename = '${SITE_BASE_DIR}/fates_${SITE}_inventory_ctrl'
+fluh_timeseries=''
 hist_fincl1=
 'FATES_VEGC_PF', 'FATES_VEGC_ABOVEGROUND', 
 'FATES_NPLANT_SZ', 'FATES_CROWNAREA_PF', 
