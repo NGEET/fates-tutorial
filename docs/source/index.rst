@@ -20,7 +20,6 @@ Modifying the Parameter File demonstrates tools for making custom parameter file
    inventory_data
 
 
-
 Indices and tables
 ==================
 
