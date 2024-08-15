@@ -14,7 +14,7 @@ export PARAM_FILES=/paramfiles                    # FATES parameter file locatio
 export INVENTORY_FILES=/inventory_data/${SITE}     # FATES inventory data file location
 
 # this whole section needs to be updated with the location of your surface and domain files
-export SITE_BASE_DIR=/inputdata
+export SITE_BASE_DIR=/sitedata
 export ELM_USRDAT_DOMAIN=domain_${SITE}_fates_tutorial.nc
 export ELM_USRDAT_SURDAT=surfdata_${SITE}_fates_tutorial.nc
 export ELM_SURFDAT_DIR=${SITE_BASE_DIR}/${SITE}
@@ -127,7 +127,7 @@ fsurdat = '${ELM_SURFDAT_DIR}/${ELM_USRDAT_SURDAT}'
 fates_paramfile='${PARAM_FILES}/fates_params_default-1pft.nc'
 use_fates=.true.
 use_fates_inventory_init = .true.
-fates_inventory_ctrl_filename = '${INVENTORY_FILES}/fates_${SITE}_inventory_ctrl'
+fates_inventory_ctrl_filename = '${SITE_BASE_DIR}/fates_${SITE}_inventory_ctrl'
 hist_fincl1=
 'FATES_VEGC_PF', 'FATES_VEGC_ABOVEGROUND', 
 'FATES_NPLANT_SZ', 'FATES_CROWNAREA_PF', 
