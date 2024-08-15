@@ -10,5 +10,13 @@ you do not have inventory data or a specific study site you can use publicly ava
 FATES reads inventory data as two text files, one describing the cohort structure - how many stems of each size in each patch, and one describing the patch
 structure - how many patches and the area of each patch. 
 
-On the FATES tutorial GitHub repo you will find an R script that takes inventory data and creates these two files. Your data need to be organized as a dataframe with a single row per tree. Columns should be as follows:
+On the FATES tutorial GitHub repo you will find an R script that takes inventory data and creates these two files.
+Your data need to be organized as a dataframe with a single row per tree. Columns should be as follows:
+
+| Column | Description | 
+| -------| ------------| 
+| status | Alive or dead. An 'A' should indicate an alive stem. All other codes will be ignored. |  
+| quadrat | The quadrat or subplot of the stem. Each quadrat needs a unique code or number. |
+| dbh | The Diameter of the tree. This can be in mm, cm or m, but be sure to adjust the units in the top section of the script. | 
+
 
