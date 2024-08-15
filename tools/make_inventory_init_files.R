@@ -33,7 +33,7 @@ df = df_full[which(df_full$gx <= 100 & df_full$gy <= 100), ]
 df = df[df$status == 'A', ]
 
 # plot area 
-plot_area = 50
+plot_area = 1
 # plot name
 plot_name = 'BCI'
 # plot year
