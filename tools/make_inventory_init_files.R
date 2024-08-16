@@ -19,15 +19,21 @@ library(stringi)
 #############################################################################
 #### 1. Load Data ####
 # Load the plot data
-#load('/Users/JFNeedham/Desktop/Inventory_initialisation_ForestGEO_to_FATES/bci.tree8.rdata')
 load('FILE_PATH_TO_YOUR_DATA/YOUR_DATA.rdata')
-df_full = bci.tree8  
+df_full = YOUR_DATA_OBJECT  
+
+### SUBSET DATA - to speed up FATES runs we are only going to read in a single ha of data. 
+### If your dataset is very large (>10 ha) consider doing this too during the tutorial.  
+### For full simulations you should use the full dataset. 
+
+### To get a single quadrat we select all stems with x and y coordinates less than 100 m 
+df = df_full[which(df_full$gx <= 100 & df_full$gy <= 100), ]
 
 #### 2. Remove dead trees ####
-df = df_full[df_full$status == 'A', ]
+df = df[df$status == 'A', ]
 
 # plot area 
-plot_area = 50
+plot_area = 1
 # plot name
 plot_name = 'BCI'
 # plot year
@@ -63,7 +69,7 @@ patch_df$area = rep((1/npatches), npatches)
 
 ### CHANGE THE FILE PATH HERE ###
 write.table(patch_df, sprintf('FILE_PATH_TO_YOUR_FOLDER/%s_%i.pss',  plot_name, plot_year), 
-          row.names=FALSE, sep = " ")
+            row.names=FALSE, sep = " ")
 
 #############################################################################
 #### 3. Make cohorts #### 
@@ -91,7 +97,6 @@ if(length(cut) > 0){
   co_df = co_df[-cut, ]
 }
 
-
 ### CHANGE THE FILE PATH HERE ###
 write.table(co_df, sprintf('FILE_PATH_TO_YOUR_FOLDER/%s_%i.css', plot_name, plot_year), 
-          row.names=FALSE, sep = ' ')
+            row.names=FALSE, sep = ' ')
