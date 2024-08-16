@@ -10,8 +10,9 @@ you do not have inventory data or a specific study site you can use publicly ava
 FATES reads inventory data as two text files, one describing the cohort structure - how many stems of each size in each patch, and one describing the patch
 structure - how many patches and the area of each patch. 
 
-On the FATES tutorial GitHub repo you will find an R script that takes inventory data and creates these two files.
-Your data need to be organized as a dataframe with a single row per tree. Columns should be as follows:
+On the FATES tutorial GitHub repo you will find an R script under tools [make_inventory_init_files.R](https://github.com/NGEET/fates-tutorial/blob/main/tools/make_inventory_init_files.R) 
+that takes inventory data and creates these two files.
+For the script to work your data need to be organized as a dataframe with a single row per tree. Columns should be as follows:
 
 | Column | Description | 
 | -------| ------------| 
@@ -19,4 +20,11 @@ Your data need to be organized as a dataframe with a single row per tree. Column
 | quadrat | The quadrat or subplot of the stem. Each quadrat needs a unique code or number. |
 | dbh | The Diameter of the tree. This can be in mm, cm or m, but be sure to adjust the units in the top section of the script. | 
 
+As noted in the R script, inventory initialization can be slow if you have a large data set (~30 mins for the full 50 ha of BCI data). 
+In the script we therefore select a single ha to use for the tutorial. We suggest that for the tutorial you do the same if you have
+a large dataset (>20 ha). 
 
+Before running the script you will need to open it and change the file path to where your data is stored, as well as file paths to
+where you want to save the files that are generated. We suggest making a folder called 'inventory_data_fates_tutorial' or something
+else descriptive and pointing to that in the R script. You also need to update the site name, the plot size (remember to set this 
+to whatever subset of the data you actually use), and the units for dbh measurements. 
