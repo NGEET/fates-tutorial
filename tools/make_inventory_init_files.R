@@ -27,12 +27,15 @@ df_full = YOUR_DATA_OBJECT
 ### For full simulations you should use the full dataset. 
 
 ### To get a single quadrat we select all stems with x and y coordinates less than 100 m 
+### NOTE - here we use gx and gy for coordinates. Depending on how your data are formatted
+### you might need to find a different way of subsetting your data
+### e.g. if you have many small plots just use one for the tutorial. 
 df = df_full[which(df_full$gx <= 100 & df_full$gy <= 100), ]
 
 #### 2. Remove dead trees ####
 df = df[df$status == 'A', ]
 
-# plot area 
+# plot area in ha
 plot_area = 1
 # plot name
 plot_name = 'BCI'

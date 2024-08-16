@@ -19,6 +19,9 @@ For the script to work your data need to be organized as a dataframe with a sing
 | status | Alive or dead. An 'A' should indicate an alive stem. All other codes will be ignored. |  
 | quadrat | The quadrat or subplot of the stem. Each quadrat needs a unique code or number. |
 | dbh | The Diameter of the tree. This can be in mm, cm or m, but be sure to adjust the units in the top section of the script. | 
+| gx | X coordinate of the stem - in m from one corner of the plot | 
+| gy | Y coordinate of the stem - in m from one corner of the plot | 
+
 
 As noted in the R script, inventory initialization can be slow if you have a large data set (~30 mins for the full 50 ha of BCI data). 
 In the script we therefore select a single ha to use for the tutorial. We suggest that for the tutorial you do the same if you have
