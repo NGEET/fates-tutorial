@@ -151,11 +151,16 @@ cat >> user_nl_datm <<EOF
 taxmode = "cycle", "cycle", "cycle"
 EOF
 
+# Setup case
 ./case.setup
+
+# Make change to datm stream field info variable names
+sed -i '/<fieldInfo>/,/<variableNames>/ s/\(<variableNames>\).*/&\n        QBOT     shum/' run/datm.streams.txt.CLM1PT.ELM_USRDAT
+sed -i '/<fieldInfo>/,$ {/<variableNames>/,$ {/ZBOT/ {d; b;}; /RH/ {d; b;}; } }' run/datm.streams.txt.CLM1PT.ELM_USRDAT
+
 ./preview_namelists
 
-cp  run/datm.streams.txt.CLM1PT.ELM_USRDAT user_datm.streams.txt.CLM1PT.ELM_USRDAT
+cp run/datm.streams.txt.CLM1PT.ELM_USRDAT user_datm.streams.txt.CLM1PT.ELM_USRDAT
 
 ./case.build --skip-provenance-check # build the run (skipping provenance avoids calling git)
-./case.submit 
-
+#./case.submit 
