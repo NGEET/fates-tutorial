@@ -153,14 +153,15 @@ EOF
 
 # Setup case
 ./case.setup
-
-# Make change to datm stream field info variable names
-sed -i '/<fieldInfo>/,/<variableNames>/ s/\(<variableNames>\).*/&\n        QBOT     shum/' run/datm.streams.txt.CLM1PT.ELM_USRDAT
-sed -i '/<fieldInfo>/,$ {/<variableNames>/,$ {/ZBOT/ {d; b;}; /RH/ {d; b;}; } }' run/datm.streams.txt.CLM1PT.ELM_USRDAT
-
 ./preview_namelists
 
+# Make change to datm stream field info variable names (specific for this tutorial) - DO NOT CHANGE
+CLM1PTFILE="run/datm.streams.txt.CLM1PT.ELM_USRDAT"
+sed -i '/ZBOT/d' ${CLM1PTFILE}
+sed -i '/RH/d' ${CLM1PTFILE}
+sed -i '/FLDS/a QBOT shum' ${CLM1PTFILE}
 cp run/datm.streams.txt.CLM1PT.ELM_USRDAT user_datm.streams.txt.CLM1PT.ELM_USRDAT
 
-./case.build --skip-provenance-check # build the run (skipping provenance avoids calling git)
-#./case.submit 
+# Build and submit the case
+./case.build --skip-provenance-check # skipping provenance avoids calling git (for this tutorial only)
+./case.submit
