@@ -6,13 +6,28 @@ This tutorial utilizes Docker to provide the user a simplified method of setting
 
 Given that FATES must be run as one of many components within the context of a larger earth system model, it is necessary for the user to become familiar with this "host" model and the infrastructure that accompanies it.  Setting up such a large "host" land model can be daunting given the number of required software libraries and packages that the model has as dependencies for building and running simulations.  Such an effort is further complicated by the variety of operating and hardware systems that the model could be deployed upon.  As such, we have developed this tutorial to be portable with the minimum amount of necessary setup as possible and to provide for portability to the greatest extent possible.  This is accomplised by the use of software containers.
 
-## Introduction to containers
+## Introduction to containerization
+
+A container is an isolated user space on your local machine that holds all the necessary libraries, packages, files, etc. necessary to run a specific software process.
+
+### Glossary of terms
+
+Dockerfile: a "recipe" that provides the instructions for building a container as an implementation of the [Open Container Ivitiative](https://opencontainers.org/) specification.
+
+Image: A pre-built binary from a Dockerfile recipe.
+
+DockerHub: an online registry of images that are available to be downloaded.
+
+Container: a running instance of an image.
+
+Volume: the interface between a running container and storage space to hold container inputs and/or outputs.  A volume can be "mounted" to an existing directory of local storage or can be a "named" storage space isolated from the local user.
+
 
 ### Docker Tutorial Environment Orientation
 
-We have designed the materials to use two main Docker images, one for running the ELM model, which is built on a precursor container where all of the required libraries for ELM are compiled (e.g. netCDF, HDF5, Python), and a second that is used to analyze ELM simulation output in Jupyter-Lab, as well as to configure custom parameter experiments. You can think about this as a "stack" of two different containers that can either be run in sequential order (i.e. run the ELM container, once complete run the jupyter-lab container to analyze the output) or can be used at the same time on a single computer. This allows a user to be running ELM simulations while also exploring the output of a previous simulation in Jupyter notebooks. Below we provide instructions for setting up and running ELM simulations in Docker as well as starting and using the Jupyter-Lab environment. Note: because we are using Docker, users do not need to install Python or any special libraries on their computers. Everything needed to run the model or launch jupyter-lab is contained within the two containers that you download when following the instructions below for setting up your Docker environment.
+We have designed the materials to use two main Docker images, one for running the FATES within the host model, which is built on a precursor image where all of the required libraries for the host model are already compiled (e.g. netCDF, HDF5, Python), and a second that is used to analyze the FATES simulation output in JupyterLab.  The tutorial utilizes a Docker container orchastration program known as Docker Compose which will run both containers at the same time and coordinate sharing of inputs and outputs.  This allows a user to be running simulations while also exploring the output of a previous simulation in Jupyter notebooks. 
 
-### Why containers?
+Next we provide the instructions for setting up and running the Docker tutuorial environment. 
 
 ## Docker environment setup
 
