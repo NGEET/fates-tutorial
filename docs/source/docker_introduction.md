@@ -59,7 +59,7 @@ Using a text editor of your choice, open the file and follow the instructions wi
     ✔ elmdata 3 layers [⣿⣿⣿]      0B/0B      Pulled                                                                   1.7s 
     ✔ sitedata 3 layers [⣿⣿⣿]      0B/0B      Pulled                                                                  3.3s 
     ```
-    Here docker is downloading, or "pulling", the necessary images from DockerHub to run the terminals.  You can see that the `landmodel` image, which is the largest docker image as it contains the host land model for running fates, takes the most amount of time.  Upon successfully pulling the images, the containers will start running:
+    Here docker is downloading, or "pulling", the necessary images from DockerHub to run the containers. Upon successfully pulling the images, the containers will start running:
     ```
    [+] Running 4/9
     ⠦ Network fates-tutorial_default         Created                                                                  3.6s 
@@ -77,7 +77,7 @@ Using a text editor of your choice, open the file and follow the instructions wi
    
    - `elm-fates`: this container holds the host land model and fates
    - `data-elm-default`: this container provides a set of necessary files that the host land model requires by default
-   - `data-met_forcing-domains`: this container provides meterological forcing data, domand and surface data sets necessary for the tutorial
+   - `data-met_forcing-domains`: this container provides meterological forcing data, domain and surface data sets necessary for the tutorial
    - `tutorial-notebook`: this container holds the jupyter notebook to run the lessons associated with the tutorial
 
 4. To teardown the tutorial containers, run the command `docker compose down`
@@ -93,7 +93,9 @@ Using a text editor of your choice, open the file and follow the instructions wi
    ✔ Network fates-tutorial_default      Removed                                                                     0.1s 
    loaner@eesaloaner-m53 fates-tutorial % 
    ```
-   Note that the images downloaded to run the containers are still available and have not been removed so they will not need to be pulled again the next time the `docker compose up -d` command is run.
+   Note that the images downloaded to run the containers are still available and have not been removed so they will not need to be pulled again the next time the `docker compose up -d` command is run.  This can be confirmed if you go to the Docker Desktop user interface and select the "Images" section in the left side bar.
+   
+   ![docker-images-pane](images/docker-images-pane.png)
 
 ## Introduction to containers
 
