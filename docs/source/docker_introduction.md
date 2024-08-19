@@ -6,6 +6,15 @@ This tutorial utilizes Docker to provide the user a simplified method of setting
 
 Docker is an open-source project that allows programmers to deploy their applications in a sandbox (called containers) to run on a host operating system. Docker allows programmers to package an application with all of its dependencies (code, data, etc) into a standardized unit that other users can work with despite running different types of operating systems.
 
+## Introduction to containers
+
+### Docker Orientation
+
+- What is Docker Desktop? Docker Desktop "enables developers to locally build, share, and run containerized applications and microservices. Docker Desktop includes Docker Engine, Docker CLI client, Docker Build/BuildKit, Docker Compose, Docker Content Trust, Kubernetes, Docker Scan, and Credential Helper. Docker Desktop is for Mac and Windows and includes the Docker Dashboard for working with local and remote container images, Dev Environments and more new features are being delivered every month such as Volume Management."
+- You can learn more about containers here: https://www.docker.com/resources/what-container/
+
+### Why containers?
+
 ## Docker environment setup
 
 ### 1. Download and install Docker Desktop
@@ -44,11 +53,11 @@ Using a text editor of your choice, open the file and follow the instructions wi
 
    Logging into Docker Desktop will provide you access with downloading the necessary images from DockerHub.
 
-2. *In a terminal, change directory to the top of `fates-tutorial`* 
+2. *In a terminal, change directory to the top of* `fates-tutorial`
 
    The `fates-tutorial` directory contains a file called `docker-compose.yml` that provides the Docker application with instructions on what docker images to download from DockerHub and how to coordinate which local directories are mapped inside the container when run.
 
-3. *To start the tutorial containers, run the command `docker compose up -d`*
+3. *To start the tutorial containers, run the command* `docker compose up -d`
 
    Upon running `docker compose up -d` you should see something similar to the following:
    ```
@@ -80,7 +89,7 @@ Using a text editor of your choice, open the file and follow the instructions wi
    - `data-met_forcing-domains`: this container provides meterological forcing data, domain and surface data sets necessary for the tutorial
    - `tutorial-notebook`: this container holds the jupyter notebook to run the lessons associated with the tutorial
 
-4. To teardown the tutorial containers, run the command `docker compose down`
+4. *To teardown the tutorial containers, run the command* `docker compose down`
 
    This command will make sure to cleanly shutdown the running containers and remove them.  Typically, the `elm-fates` container takes the longest to shut down. You should see the terminal return something like:
    ```
@@ -97,11 +106,4 @@ Using a text editor of your choice, open the file and follow the instructions wi
    
    ![docker-images-pane](images/docker-images-pane.png)
 
-## Introduction to containers
-
-### Docker Orientation
-
-- What is Docker Desktop? Docker Desktop "enables developers to locally build, share, and run containerized applications and microservices. Docker Desktop includes Docker Engine, Docker CLI client, Docker Build/BuildKit, Docker Compose, Docker Content Trust, Kubernetes, Docker Scan, and Credential Helper. Docker Desktop is for Mac and Windows and includes the Docker Dashboard for working with local and remote container images, Dev Environments and more new features are being delivered every month such as Volume Management."
-- You can learn more about containers here: https://www.docker.com/resources/what-container/
-
-### Why containers?
+:tada: Congratulations, the Docker fates tutorial environment has been successfully set up! 
