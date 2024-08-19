@@ -2,16 +2,15 @@
 
 ## Overview
 
-This tutorial utilizes Docker to provide the user a simplified method of setting up the necessary software to run fates.
+This tutorial utilizes Docker to provide the user a simplified method of setting up the necessary software to run FATES on a user's local machine, such as a laptop.  Typically, FATES development and usage is conducted on large high performance computing clusters or supercomputers to enable global simulations.  However, FATES can also be run regionally and for specific sites, the latter of which is tractable on smaller machines.  This tutorial will orient new users to the FATES terminology and usage through simulation of individual sites.
 
-Docker is an open-source project that allows programmers to deploy their applications in a sandbox (called containers) to run on a host operating system. Docker allows programmers to package an application with all of its dependencies (code, data, etc) into a standardized unit that other users can work with despite running different types of operating systems.
+Given that FATES must be run as one of many components within the context of a larger earth system model, it is necessary for the user to become familiar with this "host" model and the infrastructure that accompanies it.  Setting up such a large "host" land model can be daunting given the number of required software libraries and packages that the model has as dependencies for building and running simulations.  Such an effort is further complicated by the variety of operating and hardware systems that the model could be deployed upon.  As such, we have developed this tutorial to be portable with the minimum amount of necessary setup as possible and to provide for portability to the greatest extent possible.  This is accomplised by the use of software containers.
 
 ## Introduction to containers
 
-### Docker Orientation
+### Docker Tutorial Environment Orientation
 
-- What is Docker Desktop? Docker Desktop "enables developers to locally build, share, and run containerized applications and microservices. Docker Desktop includes Docker Engine, Docker CLI client, Docker Build/BuildKit, Docker Compose, Docker Content Trust, Kubernetes, Docker Scan, and Credential Helper. Docker Desktop is for Mac and Windows and includes the Docker Dashboard for working with local and remote container images, Dev Environments and more new features are being delivered every month such as Volume Management."
-- You can learn more about containers here: https://www.docker.com/resources/what-container/
+We have designed the materials to use two main Docker images, one for running the ELM model, which is built on a precursor container where all of the required libraries for ELM are compiled (e.g. netCDF, HDF5, Python), and a second that is used to analyze ELM simulation output in Jupyter-Lab, as well as to configure custom parameter experiments. You can think about this as a "stack" of two different containers that can either be run in sequential order (i.e. run the ELM container, once complete run the jupyter-lab container to analyze the output) or can be used at the same time on a single computer. This allows a user to be running ELM simulations while also exploring the output of a previous simulation in Jupyter notebooks. Below we provide instructions for setting up and running ELM simulations in Docker as well as starting and using the Jupyter-Lab environment. Note: because we are using Docker, users do not need to install Python or any special libraries on their computers. Everything needed to run the model or launch jupyter-lab is contained within the two containers that you download when following the instructions below for setting up your Docker environment.
 
 ### Why containers?
 
@@ -109,4 +108,4 @@ Using a text editor of your choice, open the file and follow the instructions wi
    Note that the images downloaded to run the containers are still available and have not been removed so they will not need to be pulled again the next time the `docker compose up -d` command is run.  This can be confirmed if you go to the Docker Desktop user interface and select the "Images" section in the left side bar.
    ![docker-images-pane](images/docker-images-pane.png)
 
-:tada: Congratulations, the Docker fates tutorial environment has been successfully set up! 
+Congratulations, the Docker fates tutorial environment has been successfully set up! 
