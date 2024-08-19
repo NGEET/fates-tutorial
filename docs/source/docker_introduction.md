@@ -89,6 +89,10 @@ Using a text editor of your choice, open the file and follow the instructions wi
    - `data-met_forcing-domains`: this container provides meterological forcing data, domain and surface data sets necessary for the tutorial
    - `tutorial-notebook`: this container holds the jupyter notebook to run the lessons associated with the tutorial
 
+   You can confirm that the containers are running by looking at the Docker Desktop GUI container pane:
+   ![docker-container-pane](images/docker-container-pane.png)
+
+
 4. *To teardown the tutorial containers, run the command* `docker compose down`
 
    This command will make sure to cleanly shutdown the running containers and remove them.  Typically, the `elm-fates` container takes the longest to shut down. You should see the terminal return something like:
@@ -103,7 +107,6 @@ Using a text editor of your choice, open the file and follow the instructions wi
    loaner@eesaloaner-m53 fates-tutorial % 
    ```
    Note that the images downloaded to run the containers are still available and have not been removed so they will not need to be pulled again the next time the `docker compose up -d` command is run.  This can be confirmed if you go to the Docker Desktop user interface and select the "Images" section in the left side bar.
-   
    ![docker-images-pane](images/docker-images-pane.png)
 
 :tada: Congratulations, the Docker fates tutorial environment has been successfully set up! 
