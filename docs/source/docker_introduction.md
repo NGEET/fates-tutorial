@@ -33,7 +33,7 @@ Next we provide the instructions for setting up and running the Docker tutuorial
 
 ### 1. Download and install Docker Desktop
 
-Go to the Docker website quick start guide and follow the instructions: https://docs.docker.com/docker-hub/quickstart/
+Go to the Docker website quick start guide and follow the instructions: [https://docs.docker.com/docker-hub/quickstart/](https://docs.docker.com/docker-hub/quickstart/)
 
 The quick start guide will instruct you to create a Docker ID and sign up for [DockerHub](https://hub.docker.com/) in the first step.  The NGEE-Tropics FATES tutorial team uses the DockerHub registry to hold the images necessary to run the tutorial containers.  It will also provide a link with instructions to download [Docker Desktop](https://docs.docker.com/desktop/), which is available for MacOS, Windows, and Linux operating systems.  Make certain to pull and run the "Hello World" container to make certain that the installation was successful and that you can pull images from the DockerHub registry.  You do not need to complete step 5 in the quick start which teaches you how to build and push a container.  This capability will not be necessary for this tutorial.
 
