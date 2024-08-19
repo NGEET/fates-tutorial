@@ -40,17 +40,51 @@ Using a text editor of your choice, open the file and follow the instructions wi
 
 ### 4. Test start the tutorial containers
 
-The `fates-tutorial` directory contains a file called `docker-compose.yml` that provides the Docker application with instructions on what docker images to download from DockerHub and how to coordinate which local directories are mapped inside the container when run.
-
 1. Start Docker Desktop and login
+
+   Logging into Docker Desktop will provide you access with downloading the necessary images from DockerHub.
+
 2. In a terminal, change directory to the top of `fates-tutorial` 
+
+   The `fates-tutorial` directory contains a file called `docker-compose.yml` that provides the Docker application with instructions on what docker images to download from DockerHub and how to coordinate which local directories are mapped inside the container when run.
+
 3. To start the tutorial containers, run the command `docker compose up -d`
+
+   Upon running `docker compose up -d` you should see something similar to the following:
+
+```
+loaner@eesaloaner-m53 fates-tutorial % docker compose up -d                  
+[+] Running 64/22
+ ✔ landmodel 21 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]      0B/0B      Pulled                                             12.3s 
+ ✔ notebook 33 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]      0B/0B      Pulled                                   1.7s 
+ ✔ elmdata 3 layers [⣿⣿⣿]      0B/0B      Pulled                                                                   1.7s 
+ ✔ sitedata 3 layers [⣿⣿⣿]      0B/0B      Pulled                                                                  3.3s 
+[+] Running 4/9
+ ⠦ Network fates-tutorial_default         Created                                                                  3.6s 
+ ⠦ Volume "fates-tutorial_modeloutput"    Created                                                                  3.6s 
+ ⠦ Volume "fates-tutorial_elm-inputdata"  Created                                                                  3.6s 
+ ⠦ Volume "fates-tutorial_site_data"      Created                                                                  3.6s 
+ ⠦ Volume "fates-tutorial_bci_inventory"  Created                                                                  3.6s 
+ ✔ Container elm-fates                    Started                                                                  3.4s 
+ ✔ Container data-elm-default             Started                                                                  3.3s 
+ ✔ Container data-met_forcing-domains     Started                                                                  3.3s 
+ ✔ Container tutorial-notebook            Started                                                                  3.5s 
+loaner@eesaloaner-m53 fates-tutorial % 
+```
+
 4. To teardown the tutorial containers, run the command `docker compose down`
 
-Upon running `docker compose up -d` you should see something similar to the following:
-```
-
-```
+   This command will make sure to cleanly shutdown the running containers.  Typically, the `elm-fates` container takes the longest to shut down. You should see the terminal return something like:
+   ```
+   loaner@eesaloaner-m53 fates-tutorial % docker compose down
+   [+] Running 5/5
+   ✔ Container data-met_forcing-domains  Removed                                                                     0.0s 
+   ✔ Container elm-fates                 Removed                                                                    10.1s 
+   ✔ Container data-elm-default          Removed                                                                     0.0s 
+   ✔ Container tutorial-notebook         Removed                                                                     0.3s 
+   ✔ Network fates-tutorial_default      Removed                                                                     0.1s 
+   loaner@eesaloaner-m53 fates-tutorial % 
+   ```
 
 ## Introduction to containers
 
