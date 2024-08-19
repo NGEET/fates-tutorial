@@ -53,7 +53,7 @@ Using a text editor of your choice, open the file and follow the instructions wi
    Upon running `docker compose up -d` you should see something similar to the following:
 
 ```
-loaner@eesaloaner-m53 fates-tutorial % docker compose up -d                  
+loaner@eesaloaner-m53 fates-tutorial % docker compose up -d
 [+] Running 64/22
  ✔ landmodel 21 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]      0B/0B      Pulled                                             12.3s 
  ✔ notebook 33 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]      0B/0B      Pulled                                   1.7s 
