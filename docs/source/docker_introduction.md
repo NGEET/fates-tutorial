@@ -8,15 +8,17 @@ Docker is an open-source project that allows programmers to deploy their applica
 
 ## Docker environment setup
 
-### 1. Download and install Docker Desktop: https://docs.docker.com/docker-hub/quickstart/
+### 1. Download and install Docker Desktop
+
+Go to the Docker website quick start guide and follow the instructions: https://docs.docker.com/docker-hub/quickstart/
 
 The quick start guide will instruct you to create a Docker ID and sign up for [DockerHub](https://hub.docker.com/) in the first step.  The NGEE-Tropics FATES tutorial team uses the DockerHub registry to hold the images necessary to run the tutorial containers.  It will also provide a link with instructions to download [Docker Desktop](https://docs.docker.com/desktop/), which is available for MacOS, Windows, and Linux operating systems.  Make certain to pull and run the "Hello World" container to make certain that the installation was successful and that you can pull images from the DockerHub registry.  You do not need to complete step 5 in the quick start which teaches you how to build and push a container.  This capability will not be necessary for this tutorial.
 
-### 2. Download the tutorial repository: https://github.com/NGEET/fates-tutorial/
+### 2. Download the [FATES tutorial repository](https://github.com/NGEET/fates-tutorial/)
 
 In this tutorial, we provide a repository with can be downloaded to your local machine, with a recommended directory structure provide ahead of time to streamline the setup.  All activities for the tutorial will take place within directory.
 
-From the github website, find the link to download the repository under the green "code" button as shown below:
+From the [fates-tutorial](https://github.com/NGEET/fates-tutorial/) github website, find the link to download the repository under the green "code" button as shown below:
 
 ![github-tutorial-download](images/Github-download.png)
 
@@ -38,10 +40,17 @@ Using a text editor of your choice, open the file and follow the instructions wi
 
 ### 4. Test start the tutorial containers
 
+The `fates-tutorial` directory contains a file called `docker-compose.yml` that provides the Docker application with instructions on what docker images to download from DockerHub and how to coordinate which local directories are mapped inside the container when run.
+
 1. Start Docker Desktop and login
-2. In a terminal, change directory to the top of the fates-tutorial repository
+2. In a terminal, change directory to the top of `fates-tutorial` 
 3. To start the tutorial containers, run the command `docker compose up -d`
 4. To teardown the tutorial containers, run the command `docker compose down`
+
+Upon running `docker compose up -d` you should see something similar to the following:
+```
+
+```
 
 ## Introduction to containers
 
