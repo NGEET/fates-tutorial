@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "Tutorial User's Guide"
+project = "FATES Tutorial"
 copyright = '2024, Lawrence Berkeley National Laboratory'
 author = 'Jessica Needham and Gregory Lemieux'
 
@@ -18,7 +18,22 @@ version = '0.0.0'
 
 extensions = [
                 'myst_parser',
+                'sphinx.ext.intersphinx',
              ]
+
+intersphinx_mapping = {
+    'fates-users-guide': ('https://fates-users-guide.readthedocs.io/', None),
+}
+
+intersphinx_disabled_domains = ['std']
+
+# RTD recommends adding the following config value.
+# Sphinx defaults to automatically resolve *unresolved* labels using all your Intersphinx mappings.
+# This behavior has unintended side-effects, namely that documentations local references can
+# suddenly resolve to an external location.
+# See also:
+# https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html#confval-intersphinx_disabled_reftypes
+intersphinx_disabled_reftypes = ["*"]
 
 templates_path = ['_templates']
 exclude_patterns = []
