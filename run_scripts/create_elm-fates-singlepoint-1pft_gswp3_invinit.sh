@@ -6,7 +6,7 @@ export COMPSET=2000_DATM%QIA_ELM%BGC-FATES_SICE_SOCN_SROF_SGLC_SWAV
 export RES=ELM_USRDAT                                
 export MACH=docker                                             # Name your machine
 export COMPILER=gnu                                            # Name your compiler
-export SITE=bci                                                # Name your site
+export SITE=your_site_name                                        # Name your site
 
 export TAG=fates-tutorial-${SITE}-inventory_init  # give your run a name
 export CASE_ROOT=/output/${SITE}                  # where in scratch should the run go?
@@ -23,7 +23,7 @@ export DIN_LOC_ROOT_FORCE=${SITE_BASE_DIR}
 
 # climate data will recycle data between these years
 export DATM_START=2003
-export DATM_STOP=2016
+export DATM_STOP=2013
 
 
 # DEPENDENT PATHS AND VARIABLES (USER MIGHT CHANGE THESE..)
@@ -151,8 +151,11 @@ EOF
 ./preview_namelists
 
 # Make change to datm stream field info variable names (specific for this tutorial) - DO NOT CHANGE
+CLM1PTFILE="run/datm.streams.txt.CLM1PT.ELM_USRDAT"
+sed -i '/ZBOT/d' ${CLM1PTFILE}
+sed -i '/RH/d' ${CLM1PTFILE}
+sed -i '/FLDS/a QBOT shum' ${CLM1PTFILE}
 cp run/datm.streams.txt.CLM1PT.ELM_USRDAT user_datm.streams.txt.CLM1PT.ELM_USRDAT
-`sed -i '/FLDS/d' user_datm.streams.txt.CLM1PT.ELM_USRDAT` 
 
 # Build and submit the case
 ./case.build --skip-provenance-check # skipping provenance avoids calling git (for this tutorial only)
