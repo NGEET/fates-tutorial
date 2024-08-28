@@ -4,13 +4,14 @@ services:
     container_name: data-elm-default
     image: ngeetropics/data-elm-default:latest
     volumes:
-      - elm-inputdata:/inputdata
+      - elm_inputdata:/inputdata
   sitedata:
     container_name: data-met_forcing-domains
     image: ngeetropics/data-drivers-domains-ctrl:latest
     volumes:
-      - site_data:/site_data
       - bci_inventory:/bci_inventory
+      - site_data:/site_data
+      - inventory_ctrl:/inventory_ctrl
   landmodel:
     image: ngeetropics/elm-builds:elm_v3.0.0-fates_sci.1.76.4_api.35.1.0
     container_name: elm-fates
@@ -29,9 +30,10 @@ services:
         source: inventory_data
         target: /inventorydata
       - modeloutput:/output
-      - elm-inputdata:/inputdata
-      - site_data:/sitedata
+      - elm_inputdata:/inputdata
       - bci_inventory:/inventorydata/bci
+      - site_data:/sitedata
+      - inventory_ctrl:/inventorydata/inventory_ctrl
   notebook:
     image: ngeetropics/fates-tutorial-jupyter:latest
     container_name: tutorial-notebook
@@ -58,6 +60,7 @@ services:
       - modeloutput:/home/${NB_USER}/output
 volumes:
   modeloutput:
-  elm-inputdata:
+  elm_inputdata:
   site_data:
   bci_inventory:
+  inventory_ctrl:
