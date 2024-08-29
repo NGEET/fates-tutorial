@@ -13,7 +13,7 @@ services:
       - site_data:/site_data
       - inventory_ctrl:/inventory_ctrl
   landmodel:
-    image: ngeetropics/elm-builds:elm_v3.0.0-fates_sci.1.76.4_api.35.1.0
+    image: ngeetropics/elm-builds:elm_v3.0.0-fates_sci.1.76.4_api.35.1.0-latest
     container_name: elm-fates
     hostname: docker
     user: modeluser
