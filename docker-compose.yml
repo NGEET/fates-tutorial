@@ -20,6 +20,7 @@ services:
     stdin_open: true
     tty: true
     volumes:
+      # volumes mounted to the fates-tutorial directory for user interaction
       - type: bind
         source: run_scripts
         target: /scripts
@@ -27,8 +28,9 @@ services:
         source: param_files
         target: /paramfiles
       - type: bind
-        source: inventory_data
+        source: ${INPUT_DATA}
         target: /inventorydata/userdata
+      # volumes that are hidden from the user directly
       - modeloutput:/output
       - elm_inputdata:/inputdata
       - bci_inventory:/inventorydata/bci
