@@ -11,7 +11,7 @@ export SITE=your_site_name                                        # Name your si
 export TAG=fates-tutorial-${SITE}-inventory_init  # give your run a name
 export CASE_ROOT=/output/${SITE}                  # where in scratch should the run go?
 export PARAM_FILES=/paramfiles                    # FATES parameter file location
-export INVENTORY_FILES=/inventory_data/${SITE}     # FATES inventory data file location
+export INVENTORY_FILES=/inventorydata/userdata/${SITE}     # FATES inventory data file location
 
 # this whole section needs to be updated with the location of your surface and domain files
 export SITE_BASE_DIR=/sitedata
@@ -122,7 +122,7 @@ fsurdat = '${ELM_SURFDAT_DIR}/${ELM_USRDAT_SURDAT}'
 fates_paramfile='${PARAM_FILES}/fates_params_default-1pft.nc'
 use_fates=.true.
 use_fates_inventory_init = .true.
-fates_inventory_ctrl_filename = '${SITE_BASE_DIR}/fates_${SITE}_inventory_ctrl'
+fates_inventory_ctrl_filename = '/inventorydata/inventory_ctrl/fates_${SITE}_inventory_ctrl'
 fluh_timeseries=''
 hist_fincl1=
 'FATES_VEGC_PF', 'FATES_VEGC_ABOVEGROUND', 
