@@ -12,22 +12,23 @@ A container is an isolated user space on your local machine that holds all the n
 
 ### Glossary of terms
 
-*Dockerfile*: a "recipe" that provides the instructions for building a container as an implementation of the [Open Container Initiative](https://opencontainers.org/) specification.
+[*Dockerfile*](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/): a "recipe" that provides the instructions for building a container as an implementation of the [Open Container Initiative](https://opencontainers.org/) specification.
 
-*Image*: A pre-built binary from a Dockerfile recipe.
+[*Image*](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/): A pre-built binary from a Dockerfile recipe.
 
-*DockerHub*: an online registry of images that are available to be downloaded.
+*DockerHub*: an online [registry](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/) of images that are available to be downloaded and run within Docker.
 
-*Container*: a running instance of an image.
+[*Container*](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/): an running instance of an image that is an isolated software process.
 
 *Volume*: the interface between a running container and storage space to hold container inputs and/or outputs.  A volume can be "mounted" to an existing directory of local storage or can be a "named" storage space isolated from the local user.
 
+[*docker compose*](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-docker-compose/):  An application that helps orchastrate running multiple containers and volumes in concert with each other.
 
 ### Docker Tutorial Environment Orientation
 
 We have designed the materials to use two main Docker images, one for running the FATES within the host model, which is built on a precursor image where all of the required libraries for the host model are already compiled (e.g. netCDF, HDF5, Python), and a second that is used to analyze the FATES simulation output in JupyterLab.  The tutorial utilizes a Docker container orchastration program known as Docker Compose which will run both containers at the same time and coordinate sharing of inputs and outputs.  This allows a user to be running simulations while also exploring the output of a previous simulation in Jupyter notebooks. 
 
-Next we provide the instructions for setting up and running the Docker tutuorial environment. 
+Next we provide the instructions for setting up and running the Docker tutuorial environment.  If you have any questions or run into issues with this setup, please reach out the fates team by posting a question on the [FATES tutorial Github discussion board](https://github.com/NGEET/fates-tutorial/discussions).
 
 ## Docker environment setup
 
