@@ -14,8 +14,6 @@ If you are familiar with [virtual machines](https://en.wikipedia.org/wiki/Virtua
 
 ### Glossary of terms
 
-[*Dockerfile*](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/): a "recipe" that provides the instructions for building a container as an implementation of the [Open Container Initiative](https://opencontainers.org/) specification.
-
 [*Image*](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/): A pre-built binary from a Dockerfile recipe.
 
 *DockerHub*: an online [registry](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/) of images that are available to be downloaded and run within Docker.
