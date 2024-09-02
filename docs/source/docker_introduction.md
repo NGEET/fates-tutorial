@@ -4,11 +4,13 @@
 
 This tutorial utilizes Docker to provide the user a simplified method of setting up the necessary software to run FATES on a user's local machine, such as a laptop.  Typically, FATES development and usage is conducted on large high performance computing clusters or supercomputers to enable global simulations.  However, FATES can also be run regionally and for specific sites, the latter of which is tractable on smaller machines.  This tutorial will orient new users to the FATES terminology and usage through simulation of individual sites.
 
-Given that FATES must be run as one of many components within the context of a larger earth system model, it is necessary for the user to become familiar with this "host" land model and the infrastructure that accompanies it.  Setting up such a large host land model can be daunting given the number of required software libraries and packages that the model has as dependencies for building and running simulations.  Such an effort is further complicated by the variety of operating and hardware systems that the model could be deployed upon.  As such, we have developed this tutorial to be portable with the minimum amount of necessary setup as possible and to provide for portability to the greatest extent possible.  This is accomplised by the use of software containers.
+Given that FATES must be run as one of many components within the context of a larger earth system model, it is necessary for the user to become familiar with this "host" model and the infrastructure that accompanies it.  FATES typically interacts with the native land model of the given earth system model, and as such we will frequently refer to the "host land model" or HLM, throughout this tutorial.  Setting up such a large host land model can be daunting given the number of required software libraries and packages that the model has as dependencies for building and running simulations.  Such an effort is further complicated by the variety of operating and hardware systems that the model could be deployed upon.  As such, we have developed this tutorial to be portable with the minimum amount of necessary setup as possible and to provide for portability to the greatest extent possible.  This is accomplised by the use of software containers.
 
-## Introduction to containerization
+## A brief introduction to containerization
 
-A container is an isolated user space on your local machine that holds all the necessary libraries, packages, files, etc. necessary to run a specific software process.
+A software container is an isolated process on your local machine that runs with all the necessary libraries, packages, files, etc. necessary to run a specific software program.  These process are run and orchistrated via an container application, of which there are a number of implementations available.  In this tutorial we will be using Docker Desktop.  Historically, containers have been developed to distribute small application services developed on one platform across a number of different operating systems and hardware architectures.  This provides software developers the ability to more easily deploy their application by offloading cross-platform compability to the container application.  
+
+If you are familiar with [virtual machines](https://en.wikipedia.org/wiki/Virtual_machine) (VMs) you will find similarities between this concept and [containerization](https://en.wikipedia.org/wiki/Containerization_(computing)).   The main difference being that VMs use software virtualization to emulate the hardware of a given platform typically to run a complete operating system, where as containers only virtualize the OS or application with the minimal set of libraries and dependencies necessary to run the containerized application.  As such VMs tend to be larger in size and interactive in scope, whereas containers are typically smaller and run obfucated from the user.  Given that we only need to provide application virtualization for this tutorial, we provide the tutorial via containerization.
 
 ### Glossary of terms
 
@@ -18,9 +20,9 @@ A container is an isolated user space on your local machine that holds all the n
 
 *DockerHub*: an online [registry](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/) of images that are available to be downloaded and run within Docker.
 
-[*Container*](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/): an running instance of an image that is an isolated software process.
+[*Container*](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/): an running instance of an image that is an isolated software process.  Container processes are *ephemeral* and as such, exiting a container process destroys any updates that may have occured in that isolated space.
 
-*Volume*: the interface between a running container and storage space to hold container inputs and/or outputs.  A volume can be "mounted" to an existing directory of local storage or can be a "named" storage space isolated from the local user.
+*Volume*: the interface between a running container and storage space to hold container inputs and/or outputs.  A volume can be "mounted" to an existing directory of local storage or can be a "named" storage space isolated from the local user.  Volumes provide a way to persist data that is produced by container processes.
 
 [*docker compose*](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-docker-compose/):  An application that helps orchastrate running multiple containers and volumes in concert with each other.
 
