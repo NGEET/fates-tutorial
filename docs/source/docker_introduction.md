@@ -12,7 +12,7 @@ A container is an isolated user space on your local machine that holds all the n
 
 ### Glossary of terms
 
-*Dockerfile*: a "recipe" that provides the instructions for building a container as an implementation of the [Open Container Ivitiative](https://opencontainers.org/) specification.
+*Dockerfile*: a "recipe" that provides the instructions for building a container as an implementation of the [Open Container Initiative](https://opencontainers.org/) specification.
 
 *Image*: A pre-built binary from a Dockerfile recipe.
 
@@ -72,7 +72,6 @@ Using a text editor of your choice, open the file and follow the instructions wi
    The `fates-tutorial` directory contains a file called `docker-compose.yml` that provides the Docker application with instructions on what docker images to download from DockerHub and how to coordinate which local directories are mapped inside the container when run.
 
    *Note*: While you are encouraged to use the terminal application for MacOS/Linux or [Windows Powershell](https://learn.microsoft.com/en-us/powershell/), Docker Desktop provides an integrated terminal for running commands as well.  You can access the integrated terminal by clicking on the "Terminal" found next to the desktop version number in the lower right hand corner of the Desktop application.  You may need to enable the terminal if it is not available by default:
-   
    ![docker-integrated-terminal](images/docker-integrated-terminal.png)
 
 3. *To start the tutorial containers, run the command* `docker compose up -d`
