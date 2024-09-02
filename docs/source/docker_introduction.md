@@ -22,7 +22,7 @@ If you are familiar with [virtual machines](https://en.wikipedia.org/wiki/Virtua
 
 [*Volume*](https://docs.docker.com/engine/storage/volumes/): the interface between a running container and storage space to hold container inputs and/or outputs.  A volume can be "mounted" to an existing directory of local storage or can be a "named" storage space isolated from the local user.  Volumes provide a way to persist data that is produced by container processes.
 
-[*docker compose*](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-docker-compose/):  An application that helps orchastrate running multiple containers and volumes in concert with each other.
+[*docker compose*](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-docker-compose/):  An application that helps orchestrate running multiple containers and volumes in concert with each other.
 
 ### Docker Tutorial Environment Orientation
 
