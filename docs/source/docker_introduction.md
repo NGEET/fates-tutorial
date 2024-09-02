@@ -79,7 +79,7 @@ Using a text editor of your choice, open the file and follow the instructions wi
 
    Upon running `docker compose up -d` you should see something similar to the following:
    ```
-   loaner@eesaloaner-m53 fates-tutorial % docker compose up -d
+   user@hostmachine fates-tutorial % docker compose up -d
    [+] Running 64/22
     ✔ landmodel 21 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]      0B/0B      Pulled                                             12.3s 
     ✔ notebook 33 layers [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]      0B/0B      Pulled                                   1.7s 
@@ -98,7 +98,6 @@ Using a text editor of your choice, open the file and follow the instructions wi
     ✔ Container data-elm-default             Started                                                                  3.3s 
     ✔ Container data-met_forcing-domains     Started                                                                  3.3s 
     ✔ Container tutorial-notebook            Started                                                                  3.5s 
-   loaner@eesaloaner-m53 fates-tutorial % 
    ```
    From this output you can see that Docker has successfully started up four containers:
    
@@ -115,14 +114,13 @@ Using a text editor of your choice, open the file and follow the instructions wi
 
    This command will make sure to cleanly shutdown the running containers and remove them.  Typically, the `elm-fates` container takes the longest to shut down. You should see the terminal return something like:
    ```
-   loaner@eesaloaner-m53 fates-tutorial % docker compose down
+   user@hostmachine fates-tutorial % docker compose down
    [+] Running 5/5
    ✔ Container data-met_forcing-domains  Removed                                                                     0.0s 
    ✔ Container elm-fates                 Removed                                                                    10.1s 
    ✔ Container data-elm-default          Removed                                                                     0.0s 
    ✔ Container tutorial-notebook         Removed                                                                     0.3s 
    ✔ Network fates-tutorial_default      Removed                                                                     0.1s 
-   loaner@eesaloaner-m53 fates-tutorial % 
    ```
    Note that the images downloaded to run the containers are still available and have not been removed so they will not need to be pulled again the next time the `docker compose up -d` command is run.  This can be confirmed if you go to the Docker Desktop user interface and select the "Images" section in the left side bar.
    ![docker-images-pane](images/docker-images-pane.png)
