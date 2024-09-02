@@ -4,7 +4,7 @@
 
 This tutorial utilizes Docker to provide the user a simplified method of setting up the necessary software to run FATES on a user's local machine, such as a laptop.  Typically, FATES development and usage is conducted on large high performance computing clusters or supercomputers to enable global simulations.  However, FATES can also be run regionally and for specific sites, the latter of which is tractable on smaller machines.  This tutorial will orient new users to the FATES terminology and usage through simulation of individual sites.
 
-Given that FATES must be run as one of many components within the context of a larger earth system model, it is necessary for the user to become familiar with this "host" model and the infrastructure that accompanies it.  Setting up such a large "host" land model can be daunting given the number of required software libraries and packages that the model has as dependencies for building and running simulations.  Such an effort is further complicated by the variety of operating and hardware systems that the model could be deployed upon.  As such, we have developed this tutorial to be portable with the minimum amount of necessary setup as possible and to provide for portability to the greatest extent possible.  This is accomplised by the use of software containers.
+Given that FATES must be run as one of many components within the context of a larger earth system model, it is necessary for the user to become familiar with this "host" land model and the infrastructure that accompanies it.  Setting up such a large host land model can be daunting given the number of required software libraries and packages that the model has as dependencies for building and running simulations.  Such an effort is further complicated by the variety of operating and hardware systems that the model could be deployed upon.  As such, we have developed this tutorial to be portable with the minimum amount of necessary setup as possible and to provide for portability to the greatest extent possible.  This is accomplised by the use of software containers.
 
 ## Introduction to containerization
 
@@ -12,15 +12,15 @@ A container is an isolated user space on your local machine that holds all the n
 
 ### Glossary of terms
 
-Dockerfile: a "recipe" that provides the instructions for building a container as an implementation of the [Open Container Ivitiative](https://opencontainers.org/) specification.
+*Dockerfile*: a "recipe" that provides the instructions for building a container as an implementation of the [Open Container Ivitiative](https://opencontainers.org/) specification.
 
-Image: A pre-built binary from a Dockerfile recipe.
+*Image*: A pre-built binary from a Dockerfile recipe.
 
-DockerHub: an online registry of images that are available to be downloaded.
+*DockerHub*: an online registry of images that are available to be downloaded.
 
-Container: a running instance of an image.
+*Container*: a running instance of an image.
 
-Volume: the interface between a running container and storage space to hold container inputs and/or outputs.  A volume can be "mounted" to an existing directory of local storage or can be a "named" storage space isolated from the local user.
+*Volume*: the interface between a running container and storage space to hold container inputs and/or outputs.  A volume can be "mounted" to an existing directory of local storage or can be a "named" storage space isolated from the local user.
 
 
 ### Docker Tutorial Environment Orientation
@@ -70,6 +70,10 @@ Using a text editor of your choice, open the file and follow the instructions wi
 2. *In a terminal, change directory to the top of* `fates-tutorial`
 
    The `fates-tutorial` directory contains a file called `docker-compose.yml` that provides the Docker application with instructions on what docker images to download from DockerHub and how to coordinate which local directories are mapped inside the container when run.
+
+   *Note*: While you are encouraged to use the terminal application for MacOS/Linux or [Windows Powershell](https://learn.microsoft.com/en-us/powershell/), Docker Desktop provides an integrated terminal for running commands as well.  You can access the integrated terminal by clicking on the "Terminal" found next to the desktop version number in the lower right hand corner of the Desktop application.  You may need to enable the terminal if it is not available by default:
+   
+   ![docker-integrated-terminal](images/docker-integrated-terminal.png)
 
 3. *To start the tutorial containers, run the command* `docker compose up -d`
 
