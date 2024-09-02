@@ -14,13 +14,13 @@ If you are familiar with [virtual machines](https://en.wikipedia.org/wiki/Virtua
 
 ### Glossary of terms
 
-[*Image*](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/): A pre-built binary from a Dockerfile recipe.
+[*Image*](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-an-image/): A pre-built package of binaries built from a [Dockerfile](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/) recipe.
 
 *DockerHub*: an online [registry](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-registry/) of images that are available to be downloaded and run within Docker.
 
 [*Container*](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/): an running instance of an image that is an isolated software process.  Container processes are *ephemeral* and as such, exiting a container process destroys any updates that may have occured in that isolated space.
 
-*Volume*: the interface between a running container and storage space to hold container inputs and/or outputs.  A volume can be "mounted" to an existing directory of local storage or can be a "named" storage space isolated from the local user.  Volumes provide a way to persist data that is produced by container processes.
+[*Volume*](https://docs.docker.com/engine/storage/volumes/): the interface between a running container and storage space to hold container inputs and/or outputs.  A volume can be "mounted" to an existing directory of local storage or can be a "named" storage space isolated from the local user.  Volumes provide a way to persist data that is produced by container processes.
 
 [*docker compose*](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-docker-compose/):  An application that helps orchastrate running multiple containers and volumes in concert with each other.
 
@@ -36,7 +36,7 @@ Next we provide the instructions for setting up and running the Docker tutuorial
 
 Go to the Docker website quick start guide and follow the instructions: [https://docs.docker.com/docker-hub/quickstart/](https://docs.docker.com/docker-hub/quickstart/)
 
-The quick start guide will instruct you to create a Docker ID and sign up for [DockerHub](https://hub.docker.com/) in the first step.  The NGEE-Tropics FATES tutorial team uses the DockerHub registry to hold the images necessary to run the tutorial containers.  It will also provide a link with instructions to download [Docker Desktop](https://docs.docker.com/desktop/), which is available for MacOS, Windows, and Linux operating systems.  Make certain to pull and run the "Hello World" container to make certain that the installation was successful and that you can pull images from the DockerHub registry.  You do not need to complete step 5 in the quick start which teaches you how to build and push a container.  This capability will not be necessary for this tutorial.
+The quick start guide will instruct you to create a Docker ID and sign up for [DockerHub](https://hub.docker.com/) in the first step.  The NGEE-Tropics FATES tutorial team uses the DockerHub registry to hold the images necessary to run the tutorial containers.  It will also provide a link with instructions to download [Docker Desktop](https://docs.docker.com/desktop/), which is available for MacOS, Windows, and Linux operating systems.  Make certain to pull and run the official Docker "hello world" image to make certain that the installation was successful and that you can pull images from the DockerHub registry.  You do not need to complete step 5 in the quick start which teaches you how to build and push a container.  This capability will not be necessary for this tutorial.
 
 ### 2. Download the [FATES tutorial repository](https://github.com/NGEET/fates-tutorial/)
 
