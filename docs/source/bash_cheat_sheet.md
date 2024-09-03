@@ -5,16 +5,16 @@ and bash commands is necessary to demonstrate FATES workflows. Below we provide 
 introduction to some terms we might use during the tutorial, and a description of some basic
 bash commands.
 
-Shell - a shell is a command line interpreter that provides a way for a user to interface with the
+*Shell* - a shell is a command line interpreter that provides a way for a user to interface with the
 operating system, typically through commands typed into a terminal. There are different types of shells.
 
-Bash shell - a specific type of shell. 
+*Bash shell* - a specific type of shell. 
 
-Shell script - a generic term for a script that is executed by a shell.
+*Shell script* - a generic term for a script that is executed by a shell.
 
-Bash script - a script that is executed by a bash shell. Typically starts with #!/bin/bash
+*Bash script* - a script that is executed by a bash shell. Typically starts with #!/bin/bash
 
-Terminal - a terminal emulator allows users to access the shell.
+*Terminal* - a terminal emulator allows users to access the shell.
 
 
 

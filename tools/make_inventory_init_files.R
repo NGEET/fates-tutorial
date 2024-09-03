@@ -32,7 +32,7 @@ df = df_full[which(df_full$gx <= 100 & df_full$gy <= 100), ]
 #### 2. Remove dead trees ####
 df = df[df$status == 'A', ]
 
-# plot area 
+# plot area
 plot_area = 1
 # plot name
 plot_name = 'BCI'
@@ -69,7 +69,7 @@ patch_df$area = rep((1/npatches), npatches)
 
 ### CHANGE THE FILE PATH HERE ###
 write.table(patch_df, sprintf('FILE_PATH_TO_YOUR_FOLDER/%s_%i.pss',  plot_name, plot_year), 
-          row.names=FALSE, sep = " ")
+            row.names=FALSE, sep = " ")
 
 #############################################################################
 #### 3. Make cohorts #### 
