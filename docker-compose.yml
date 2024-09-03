@@ -27,7 +27,7 @@ services:
         source: param_files
         target: /paramfiles
       - type: bind
-        source: inventory_data
+        source: ${INPUT_DATA}
         target: /inventorydata/userdata
       - modeloutput:/output
       - elm_inputdata:/inputdata
