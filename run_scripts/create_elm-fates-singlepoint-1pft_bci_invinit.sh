@@ -22,7 +22,7 @@ export DIN_LOC_ROOT_FORCE=${SITE_BASE_DIR}
 
 # climate data will recycle data between these years
 export DATM_START=2003
-export DATM_STOP=2014
+export DATM_STOP=2016
 
 
 # DEPENDENT PATHS AND VARIABLES (USER MIGHT CHANGE THESE..)

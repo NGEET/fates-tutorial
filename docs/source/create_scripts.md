@@ -1,7 +1,7 @@
 # Create Scripts 
 
 The `create_fates_run.sh` script is a set of instructions specifying the configuration of the FATES run.
-An example script is found in the fates-tutorial repository under run_scripts (outside the container) or scripts (insdie the container.
+An example script is found in the fates-tutorial repository under run_scripts (outside the container) or scripts (insdie the container).
 To run the create script and launch a FATES simualtion
 we open a terminal window, change directory to the directory where the script is located and then type: 
 
@@ -65,18 +65,19 @@ export DIN_LOC_ROOT_FORCE=${SITE_BASE_DIR}
 
 The surface dataset contains information on the soil properties and the fraction of the grid cell
 that is natural vegetation. The domain file contains information on  the lat and lon of the site
-and what fraction of the grid cell is active i.e. running FATES. DIN_LOC_ROOT_FORCE simply forces
+and what fraction of the grid cell is active i.e. running FATES. DIN_LOC_ROOT_FORCE forces
 the model to use climate driving data located within the site directory. 
 
-We will be driving the simulations with climate data stored in the sitedata directory. This is
-GSWP3 reanalysis data that has been subset to only the grid cell of each site. Since this data
+Climate data is stored in the sitedata directory. For simulations at new sites we will use GSWP3 reanalysis data
+that has been subset to only the grid cell of each site. Since this data
 is only available from the years 2003 to 2014 we tell the model to keep cycling the climate data
-so that we can run longer simulations. 
+so that we can run longer simulations. For BCI, we have meterological data from a tower at the site, and we can use this
+data which is available between 2003 and 2016.  
 
 ```
 # climate data will recycle data between these years
 export DATM_START=2003
-export DATM_STOP=2014
+export DATM_STOP=2016
 ```
 
 The next code block changes into the directory where the scripts needed to create a FATES case
