@@ -11,9 +11,8 @@ export SITE=bci                                                # Name your site
 export TAG=fates-tutorial-${SITE}-inventory_init  # give your run a name
 export CASE_ROOT=/output/${SITE}                  # where in scratch should the run go?
 export PARAM_FILES=/paramfiles                    # FATES parameter file location
-export INVENTORY_FILES=/inventorydata/${SITE}     # FATES inventory data file location
 
-# this whole section needs to be updated with the location of your surface and domain files
+# surface and domain files
 export SITE_BASE_DIR=/sitedata
 export ELM_USRDAT_DOMAIN=domain_${SITE}_fates_tutorial.nc
 export ELM_USRDAT_SURDAT=surfdata_${SITE}_fates_tutorial.nc
@@ -23,7 +22,7 @@ export DIN_LOC_ROOT_FORCE=${SITE_BASE_DIR}
 
 # climate data will recycle data between these years
 export DATM_START=2003
-export DATM_STOP=2016
+export DATM_STOP=2014
 
 
 # DEPENDENT PATHS AND VARIABLES (USER MIGHT CHANGE THESE..)
