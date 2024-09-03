@@ -25,9 +25,9 @@ Volume: the interface between a running container and storage space to hold cont
 
 ### Docker Tutorial Environment Orientation
 
-We have designed the materials to use two main Docker images, one for running the FATES within the host model, which is built on a precursor image where all of the required libraries for the host model are already compiled (e.g. netCDF, HDF5, Python), and a second that is used to analyze the FATES simulation output in JupyterLab.  The tutorial utilizes a Docker container orchastration program known as Docker Compose which will run both containers at the same time and coordinate sharing of inputs and outputs.  This allows a user to be running simulations while also exploring the output of a previous simulation in Jupyter notebooks. 
+We have designed the materials to use two main Docker images, one for running the FATES within the host model, which is built on a precursor image where all of the required libraries for the host model are already compiled (e.g. netCDF, HDF5, Python), and a second that is used to analyze the FATES simulation output in JupyterLab.  The tutorial utilizes a Docker container orchastration program known as Docker Compose, which will run both containers at the same time and coordinate sharing of inputs and outputs.  This allows a user to run simulations while also exploring the output of a previous simulation in Jupyter notebooks. 
 
-Next we provide the instructions for setting up and running the Docker tutuorial environment. 
+Next are instructions for setting up and running the Docker tutuorial environment. 
 
 ## Docker environment setup
 
@@ -59,7 +59,7 @@ INPUT_DATA=
 NB_USER=jovyan
 ```
 
-Using a text editor of your choice, open the file and follow the instructions within updating its contents as approprite, making sure to save a copy of your changes as a new file named `.env`.
+Using a text editor of your choice, open the file and follow the instructions within updating its contents as appropriate, making sure to save a copy of your changes as a new file named `.env`.
 
 ### 4. Test start the tutorial containers
 
