@@ -32,6 +32,8 @@ Next we provide the instructions for setting up and running the Docker tutuorial
 
 ## Docker environment setup
 
+If you are unfamiliar with the linux command line, please see the {doc}bash_cheat_sheet for a list of commons commands.
+
 ### 1. Download and install Docker Desktop
 
 Go to the Docker website quick start guide and follow the instructions: [https://docs.docker.com/docker-hub/quickstart/](https://docs.docker.com/docker-hub/quickstart/)
@@ -63,8 +65,6 @@ NB_USER=jovyan
 Using a text editor of your choice, open the file and follow the instructions within updating its contents as approprite, making sure to save a copy of your changes as a new file named `.env`.
 
 ### 4. Test start the tutorial containers
-
-If you are unfamiliar with the linux command line, please see the :doc:bash_cheat_sheet for a list of commons commands.
 
 1. *Start Docker Desktop and login*
 
