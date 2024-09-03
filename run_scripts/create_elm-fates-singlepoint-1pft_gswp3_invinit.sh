@@ -6,12 +6,12 @@ export COMPSET=2000_DATM%QIA_ELM%BGC-FATES_SICE_SOCN_SROF_SGLC_SWAV
 export RES=ELM_USRDAT                                
 export MACH=docker                                             # Name your machine
 export COMPILER=gnu                                            # Name your compiler
-export SITE=your_site_name                                        # Name your site
+export SITE=YOUR_SITE_NAME                                        # Name your site
 
 export TAG=fates-tutorial-${SITE}-inventory_init  # give your run a name
 export CASE_ROOT=/output/${SITE}                  # where in scratch should the run go?
 export PARAM_FILES=/paramfiles                    # FATES parameter file location
-export INVENTORY_FILES=/inventorydata/userdata/${SITE}     # FATES inventory data file location
+
 
 # this whole section needs to be updated with the location of your surface and domain files
 export SITE_BASE_DIR=/sitedata
@@ -23,7 +23,7 @@ export DIN_LOC_ROOT_FORCE=${SITE_BASE_DIR}
 
 # climate data will recycle data between these years
 export DATM_START=2003
-export DATM_STOP=2013
+export DATM_STOP=2014
 
 
 # DEPENDENT PATHS AND VARIABLES (USER MIGHT CHANGE THESE..)
@@ -97,10 +97,10 @@ cd ${CASE_NAME}
 # =================================================================================
 
 ./xmlchange DEBUG=FALSE
-./xmlchange STOP_N=20 # how many years should the simulation run
+./xmlchange STOP_N=5 # how many years should the simulation run
 ./xmlchange RUN_STARTDATE='1900-01-01'
 ./xmlchange STOP_OPTION=nyears
-./xmlchange REST_N=20 # how often to make restart files
+./xmlchange REST_N=5 # how often to make restart files
 ./xmlchange RESUBMIT=0 # how many resubmits 
 
 ./xmlchange DATM_CLMNCEP_YR_START=${DATM_START}
