@@ -18,7 +18,7 @@ Modifying the Parameter File demonstrates tools for making custom parameter file
 
    docker_introduction
    inventory_data
-
+   bash_cheat_sheet
 
 Indices and tables
 ==================

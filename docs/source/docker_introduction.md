@@ -32,6 +32,8 @@ Next we provide the instructions for setting up and running the Docker tutuorial
 
 ## Docker environment setup
 
+*Note:* If you are unfamiliar with the linux command line, please see the {doc}`bash_cheat_sheet` for a list of commons commands.
+
 ### 1. Download and install Docker Desktop
 
 Go to the Docker website quick start guide and follow the instructions: [https://docs.docker.com/docker-hub/quickstart/](https://docs.docker.com/docker-hub/quickstart/)
