@@ -1,4 +1,5 @@
-# fates-tutorial
-Repository for FATES tutorial and related documentation
+# FATES Tutorial Repository
 
-The tutorial can be found on read the docs: https://fates-tutorial.readthedocs.io/en/latest/
+This is the repository for the FATES tutorial and related documentation.
+
+The tutorial docutmentation including setup guide is hosted on Read The Docs: https://fates-tutorial.readthedocs.io/en/latest/
