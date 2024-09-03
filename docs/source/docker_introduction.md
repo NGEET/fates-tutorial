@@ -64,6 +64,8 @@ Using a text editor of your choice, open the file and follow the instructions wi
 
 ### 4. Test start the tutorial containers
 
+If you are unfamiliar with the linux command line, please see the :doc:bash_cheat_sheet for a list of commons commands.
+
 1. *Start Docker Desktop and login*
 
    Logging into Docker Desktop will provide you access with downloading the necessary images from DockerHub.
