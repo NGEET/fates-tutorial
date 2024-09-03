@@ -4,20 +4,23 @@ services:
     container_name: data-elm-default
     image: ngeetropics/data-elm-default:latest
     volumes:
-      - elm-inputdata:/inputdata
+      - elm_inputdata:/inputdata
   sitedata:
-    container_name: data-bci
-    image: ngeetropics/data-bci:latest
+    container_name: data-met_forcing-domains
+    image: ngeetropics/data-drivers-domains-ctrl:latest
     volumes:
+      - bci_inventory:/bci_inventory
       - site_data:/site_data
+      - inventory_ctrl:/inventory_ctrl
   landmodel:
-    image: ngeetropics/elm-builds:elm_v3.0.0-fates_sci.1.76.4_api.35.1.0
+    image: ngeetropics/elm-builds:elm_v3.0.0-fates_sci.1.76.4_api.35.1.0-latest
     container_name: elm-fates
     hostname: docker
     user: modeluser
     stdin_open: true
     tty: true
     volumes:
+      # volumes mounted to the fates-tutorial directory for user interaction
       - type: bind
         source: run_scripts
         target: /scripts
@@ -25,11 +28,14 @@ services:
         source: param_files
         target: /paramfiles
       - type: bind
-        source: inventory_data
-        target: /inventorydata
+        source: ${INPUT_DATA}
+        target: /inventorydata/userdata
+      # volumes that are hidden from the user directly
       - modeloutput:/output
-      - elm-inputdata:/inputdata
+      - elm_inputdata:/inputdata
+      - bci_inventory:/inventorydata/bci
       - site_data:/sitedata
+      - inventory_ctrl:/inventorydata/inventory_ctrl
   notebook:
     image: ngeetropics/fates-tutorial-jupyter:latest
     container_name: tutorial-notebook
@@ -56,5 +62,7 @@ services:
       - modeloutput:/home/${NB_USER}/output
 volumes:
   modeloutput:
-  elm-inputdata:
+  elm_inputdata:
   site_data:
+  bci_inventory:
+  inventory_ctrl:

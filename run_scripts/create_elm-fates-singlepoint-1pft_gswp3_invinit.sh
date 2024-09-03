@@ -6,38 +6,31 @@ export COMPSET=2000_DATM%QIA_ELM%BGC-FATES_SICE_SOCN_SROF_SGLC_SWAV
 export RES=ELM_USRDAT                                
 export MACH=docker                                             # Name your machine
 export COMPILER=gnu                                            # Name your compiler
-export PROJECT=m2420                                           # change to your project
-export SITE=bci
+export SITE=your_site_name                                        # Name your site
 
-export TAG=fates-tutorial-${SITE}         # give your run a name
-export CASE_ROOT=/output/${SITE}          # where in scratch should the run go?
-export PARAM_FILES=/paramfiles            # FATES parameter file location
+export TAG=fates-tutorial-${SITE}-inventory_init  # give your run a name
+export CASE_ROOT=/output/${SITE}                  # where in scratch should the run go?
+export PARAM_FILES=/paramfiles                    # FATES parameter file location
+export INVENTORY_FILES=/inventorydata/userdata/${SITE}     # FATES inventory data file location
 
 # this whole section needs to be updated with the location of your surface and domain files
-#export SITE_BASE_DIR=/global/cfs/cdirs/m2420/fates-tutorial-2024/fates-tutorial/met_data
 export SITE_BASE_DIR=/sitedata
-export ELM_USRDAT_DOMAIN=domain_bci_fates_tutorial.nc
-export ELM_USRDAT_SURDAT=surfdata_bci_fates_tutorial.nc
+export ELM_USRDAT_DOMAIN=domain_${SITE}_fates_tutorial.nc
+export ELM_USRDAT_SURDAT=surfdata_${SITE}_fates_tutorial.nc
 export ELM_SURFDAT_DIR=${SITE_BASE_DIR}/${SITE}
 export ELM_DOMAIN_DIR=${SITE_BASE_DIR}/${SITE}
 export DIN_LOC_ROOT_FORCE=${SITE_BASE_DIR}
 
 # climate data will recycle data between these years
-export DATM_START=2004
-export DATM_STOP=2014
+export DATM_START=2003
+export DATM_STOP=2013
 
 
 # DEPENDENT PATHS AND VARIABLES (USER MIGHT CHANGE THESE..)
 # =======================================================================================
 export SOURCE_DIR=/E3SM/cime/scripts  # change to the path where your E3SM/cime/sripts is
 cd ${SOURCE_DIR}
-
-# elm-fates container does not have git activated
-# export CIME_HASH=`git log -n 1 --pretty=%h`
-# export ELM_HASH=`(cd  ../../components/elm/src;git log -n 1 --pretty=%h)`
-# export FATES_HASH=`(cd ../../components/elm/src/external_models/fates;git log -n 1 --pretty=%h)`
-# export GIT_HASH=E${ELM_HASH}-F${FATES_HASH}
-export CASE_NAME=${CASE_ROOT}/${TAG}.`date +"%Y-%m-%d-%H%M%s"`
+export CASE_NAME=${CASE_ROOT}/${TAG}.`date +"%Y-%m-%d"`
 
 
 # REMOVE EXISTING CASE IF PRESENT
@@ -104,30 +97,20 @@ cd ${CASE_NAME}
 # =================================================================================
 
 ./xmlchange DEBUG=FALSE
-./xmlchange STOP_N=5 # how many years should the simulation run
+./xmlchange STOP_N=20 # how many years should the simulation run
 ./xmlchange RUN_STARTDATE='1900-01-01'
 ./xmlchange STOP_OPTION=nyears
-./xmlchange REST_N=5 # how often to make restart files
+./xmlchange REST_N=20 # how often to make restart files
 ./xmlchange RESUBMIT=0 # how many resubmits 
 
 ./xmlchange DATM_CLMNCEP_YR_START=${DATM_START}
 ./xmlchange DATM_CLMNCEP_YR_END=${DATM_STOP}
-
-#./xmlchange JOB_WALLCLOCK_TIME=02:58:00
-#./xmlchange JOB_QUEUE=regular
-# to run in debug queue - very useful for debugging :) 
-./xmlchange JOB_WALLCLOCK_TIME=00:29:00
-# ./xmlchange JOB_QUEUE=debug
-./xmlchange SAVE_TIMING=FALSE
 
 
 # MACHINE SPECIFIC, AND/OR USER PREFERENCE CHANGES (USERS WILL CHANGE THESE)
 # =================================================================================
 
 ./xmlchange GMAKE=make
-#./xmlchange DOUT_S_SAVE_INTERIM_RESTART_FILES=FALSE
-#./xmlchange DOUT_S=TRUE
-#./xmlchange DOUT_S_ROOT=${CASE_NAME}/run
 ./xmlchange RUNDIR=${CASE_NAME}/run
 ./xmlchange EXEROOT=${CASE_NAME}/bld
 
@@ -138,6 +121,9 @@ cat >> user_nl_elm <<EOF
 fsurdat = '${ELM_SURFDAT_DIR}/${ELM_USRDAT_SURDAT}'
 fates_paramfile='${PARAM_FILES}/fates_params_default-1pft.nc'
 use_fates=.true.
+use_fates_inventory_init = .true.
+fates_inventory_ctrl_filename = '/inventorydata/inventory_ctrl/fates_${SITE}_inventory_ctrl'
+fluh_timeseries=''
 hist_fincl1=
 'FATES_VEGC_PF', 'FATES_VEGC_ABOVEGROUND', 
 'FATES_NPLANT_SZ', 'FATES_CROWNAREA_PF', 
@@ -150,21 +136,27 @@ hist_fincl1=
 'FATES_MORTALITY_USTORY_SZPF', 'FATES_NPLANT_SZPF',
 'FATES_NPLANT_CANOPY_SZPF', 'FATES_NPLANT_USTORY_SZPF',
 'FATES_NPP_PF', 'FATES_GPP_PF', 'FATES_NEP', 'FATES_FIRE_CLOSS',
-'FATES_ABOVEGROUND_PROD_SZPF', 'FATES_ABOVEGROUND_MORT_SZPF'
-use_fates_nocomp=.false.                                                                                    
-use_fates_logging=.false.
-fates_parteh_mode = 1
-fluh_timeseries = ''
+'FATES_ABOVEGROUND_PROD_SZPF', 'FATES_ABOVEGROUND_MORT_SZPF', 
+'FATES_NPLANT_CANOPY_SZ', 'FATES_NPLANT_USTORY_SZ', 
+'FATES_DDBH_CANOPY_SZ', 'FATES_DDBH_USTORY_SZ', 
+'FATES_MORTALITY_CANOPY_SZ', 'FATES_MORTALITY_USTORY_SZ'
 EOF
 	 
 cat >> user_nl_datm <<EOF
 taxmode = "cycle", "cycle", "cycle"
 EOF
 
+# Setup case
 ./case.setup
 ./preview_namelists
 
-cp  run/datm.streams.txt.CLM1PT.ELM_USRDAT user_datm.streams.txt.CLM1PT.ELM_USRDAT
+# Make change to datm stream field info variable names (specific for this tutorial) - DO NOT CHANGE
+CLM1PTFILE="run/datm.streams.txt.CLM1PT.ELM_USRDAT"
+sed -i '/ZBOT/d' ${CLM1PTFILE}
+sed -i '/RH/d' ${CLM1PTFILE}
+sed -i '/FLDS/a QBOT shum' ${CLM1PTFILE}
+cp run/datm.streams.txt.CLM1PT.ELM_USRDAT user_datm.streams.txt.CLM1PT.ELM_USRDAT
 
-./case.build --skip-provenance-check # build the run (skipping provenance avoids calling git)
-#./case.submit # submit the job to slurm
+# Build and submit the case
+./case.build --skip-provenance-check # skipping provenance avoids calling git (for this tutorial only)
+./case.submit
