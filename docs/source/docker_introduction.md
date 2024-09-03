@@ -25,7 +25,7 @@ Volume: the interface between a running container and storage space to hold cont
 
 ### Docker Tutorial Environment Orientation
 
-We have designed the materials to use two main Docker images, one for running the FATES within the host model, which is built on a precursor image where all of the required libraries for the host model are already compiled (e.g. netCDF, HDF5, Python), and a second that is used to analyze the FATES simulation output in JupyterLab.  The tutorial utilizes a Docker container orchastration program known as Docker Compose, which will run both containers at the same time and coordinate sharing of inputs and outputs.  This allows a user to run simulations while also exploring the output of a previous simulation in Jupyter notebooks. 
+We have designed the materials to use two main Docker images, one for running the FATES within the host model, which is built on a precursor image where all of the required libraries for the host model are already compiled (e.g. netCDF, HDF5, Python), and a second that is used to analyze the FATES simulation output in JupyterLab.  The tutorial utilizes a Docker container orchestration program known as Docker Compose, which will run both containers at the same time and coordinate sharing of inputs and outputs.  This allows a user to run simulations while also exploring the output of a previous simulation in Jupyter notebooks. 
 
 Next are instructions for setting up and running the Docker tutuorial environment. 
 
