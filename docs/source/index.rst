@@ -16,9 +16,15 @@ Modifying the Parameter File demonstrates tools for making custom parameter file
    :maxdepth: 1
    :caption: Contents:
 
+   bash_cheat_sheet
    docker_introduction
    inventory_data
-   bash_cheat_sheet
+   inventory_init
+   create_scripts
+   history_outputs
+   parameter_file_tools
+   new_site
+   
 
 Indices and tables
 ==================
