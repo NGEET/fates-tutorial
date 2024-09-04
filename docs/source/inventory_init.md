@@ -15,15 +15,15 @@ absolutely all
 aspects, including carbon, water, energy, demography and nutrients.
 
 2. A "cold-start", spin-up type simulation.  The energy, water, nutrient and soil carbon states will be initialized with nominal values.  The vegetation in this case, is 
-initialized by creating a single cohort for each of the represented plant functional types in the fates parameter file, with a an initial number density as specified in 
+initialized by creating a single cohort for each of the represented plant functional types in the fates parameter file, with an initial number density as specified in 
 the fates parameter file, and a starting size that equals the smallest size of a cohort (the size of a new recruit, defined by h_min).  It is assumed that over a suitably 
 long enough period of time, the relevant quantities of interest in the simulation will have responded and reacted to the model boundary conditions such that no (or 
 limited) memory of the arbitrary initial conditions remain.
 
 3. A "cold-start", with inventory initialization. This is the method used in this tutorial. 
 This mode is similar to Case 2, in that the soil biogeochemistry, hydrology and energy states are 
-given nominal values.  
-However, in this case, the user can direct the initialization to read plant demographic data from a set of files.  The canopy structure and composition that is defined in 
+given nominal values.  However, in this case, the user can direct the initialization to read plant demographic data from a set of files. 
+The canopy structure and composition that is defined in 
 the files is generally limited to the size, type and number of plants that exist, and potentially information on existing litter pools and coarse woody debris.
 
 

@@ -33,7 +33,7 @@ fates_pftname =
   "c4_grass                                   " ;
 ```
 
-Since we are running FATES at a tropical site we don't want the temperate and  arctic PFTs to be.
+Since we are running FATES at a tropical site we don't want the temperate and  arctic PFTs to be present.
 We can use the python script FatesPFTIndexSwapper.py to make a new parameter file that only contains the 
 tropical tree PFT that we  want in our simulations. We run this script from the command line
 and provide three arguments, --fin  - the original parameter file, --fout - the new parameter
@@ -47,7 +47,7 @@ This generates a parameter file with a single PFT. Try converting the .nc file t
 open and then check to see if it worked. 
 
 It is also possible to make a parameter file with two copies of a PFT. This is useful if we want to make
-a parameter file with two PFTs that grow in the same place  but vary in their traits. In lesson five want
+a parameter file with two PFTs that grow in the same place  but vary in their traits. In lesson five we want
 to run FATES at each of our sites with two competing  PFTs, an early successional and a late succesional. 
 
 To do this we run the same script as above but we specify that we want pft 1 repeated.
@@ -62,7 +62,7 @@ Now turn that new file into a .cdl file that is human readable using the NCO scr
 ncdump fates_params_2pfts.nc > fates_params_2pfts.cdl
 ```
 
-Now you can open the file using your favourite text editor and make  changes to one or both of the PFTs. 
+Now you can open the file using your favourite text editor and make changes to one or both of the PFTs. 
 Keep in mind  the trade-offs we discussed earlier. 
 
 When you have finished editing your parameter  file make a .nc version using ncgen. 
