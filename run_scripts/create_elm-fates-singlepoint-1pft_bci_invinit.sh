@@ -11,9 +11,8 @@ export SITE=bci                                                # Name your site
 export TAG=fates-tutorial-${SITE}-inventory_init  # give your run a name
 export CASE_ROOT=/output/${SITE}                  # where in scratch should the run go?
 export PARAM_FILES=/paramfiles                    # FATES parameter file location
-export INVENTORY_FILES=/inventorydata/${SITE}     # FATES inventory data file location
 
-# this whole section needs to be updated with the location of your surface and domain files
+# surface and domain files
 export SITE_BASE_DIR=/sitedata
 export ELM_USRDAT_DOMAIN=domain_${SITE}_fates_tutorial.nc
 export ELM_USRDAT_SURDAT=surfdata_${SITE}_fates_tutorial.nc
@@ -97,10 +96,10 @@ cd ${CASE_NAME}
 # =================================================================================
 
 ./xmlchange DEBUG=FALSE
-./xmlchange STOP_N=20 # how many years should the simulation run
+./xmlchange STOP_N=10 # how many years should the simulation run
 ./xmlchange RUN_STARTDATE='1900-01-01'
 ./xmlchange STOP_OPTION=nyears
-./xmlchange REST_N=20 # how often to make restart files
+./xmlchange REST_N=10 # how often to make restart files
 ./xmlchange RESUBMIT=0 # how many resubmits 
 
 ./xmlchange DATM_CLMNCEP_YR_START=${DATM_START}

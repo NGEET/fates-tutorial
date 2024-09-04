@@ -33,13 +33,13 @@ The number of samples on each history file stream is given by the namelist varia
 | Annual         | Annual     | -8760       | 1          | Annual outputs written out yearly | 
 | Annual         | Monthly    | 0           | 12         | Monthly outputs written out yearly | 
 | Annual         | Daily      | -24         | 365        | Daily outputs written out yearly |  
-| Annual         | Daily      | -1          | 8760       | Daily outputs written out yearly |  
+| Annual         | Hourly     | -1          | 8760       | Hourly outputs written out yearly |  
 | Monthly        | Monthly    | 0           | 1          | DEFAULT  Monthly outputs written out monthly |  
 | Daily          | Daily      | -24         | 1          | Daily outputs written out daily |  
 | Daily          | Hourly     | -1          | 24         | Daily outputs written out hourly |  
 | Hourly         | Hourly     | -1          | 1          | Hourly outputs written out hourly |  
-| Five years     | monthly    | 0           | 60         | Monthly outputs written out every five years |  
-| Ten years      | annualy    | -8760       | 10         | Annual outputs written out every ten years |  
+| Five years     | Monthly    | 0           | 60         | Monthly outputs written out every five years |  
+| Ten years      | Annual     | -8760       | 10         | Annual outputs written out every ten years |  
 
 
 
