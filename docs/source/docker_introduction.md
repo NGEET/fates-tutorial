@@ -26,9 +26,9 @@ If you are familiar with [virtual machines](https://en.wikipedia.org/wiki/Virtua
 
 ### Docker Tutorial Environment Orientation
 
-We have designed the materials to use two main Docker images, one for running the FATES within the host model, which is built on a precursor image where all of the required libraries for the host model are already compiled (e.g. netCDF, HDF5, Python), and a second that is used to analyze the FATES simulation output in JupyterLab.  The tutorial utilizes a Docker container orchastration program known as Docker Compose which will run both containers at the same time and coordinate sharing of inputs and outputs.  This allows a user to be running simulations while also exploring the output of a previous simulation in Jupyter notebooks. 
+We have designed the materials to use two main Docker images, one for running the FATES within the host model, which is built on a precursor image where all of the required libraries for the host model are already compiled (e.g. netCDF, HDF5, Python), and a second that is used to analyze the FATES simulation output in JupyterLab.  The tutorial utilizes a Docker container orchestration program known as Docker Compose, which will run both containers at the same time and coordinate sharing of inputs and outputs.  This allows a user to run simulations while also exploring the output of a previous simulation in Jupyter notebooks. 
 
-Next we provide the instructions for setting up and running the Docker tutuorial environment.  If you have any questions or run into issues with this setup, please reach out the fates team by posting a question on the [FATES tutorial Github discussion board](https://github.com/NGEET/fates-tutorial/discussions).
+Next are instructions for setting up and running the Docker tutuorial environment.   If you have any questions or run into issues with this setup, please reach out the fates team by posting a question on the [FATES tutorial Github discussion board](https://github.com/NGEET/fates-tutorial/discussions).
 
 ## Docker environment setup
 
@@ -62,7 +62,7 @@ INPUT_DATA=
 NB_USER=jovyan
 ```
 
-Using a text editor of your choice, open the file and follow the instructions within updating its contents as approprite, making sure to save a copy of your changes as a new file named `.env`.
+Using a text editor of your choice, open the file and follow the instructions within updating its contents as appropriate, making sure to save a copy of your changes as a new file named `.env`.
 
 ### 4. Test start the tutorial containers
 
