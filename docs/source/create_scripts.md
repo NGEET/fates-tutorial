@@ -2,8 +2,8 @@
 
 The `create_fates_run.sh` script is a set of instructions specifying the configuration of the FATES run.
 An example script is found in the fates-tutorial repository under run_scripts (outside the container) or scripts (insdie the container).
-To run the create script and launch a FATES simualtion
-we open a terminal window, change directory to the directory where the script is located and then type: 
+To run the create script and launch a FATES simualtion, from inside the elm-fates container, 
+change directory to the scripts directory and type: 
 
 ```
 ./create_elm-fates-singlepoint-1pft_bci_invinit.sh
@@ -245,6 +245,3 @@ A lot of text will go zooming by as the code is compiled and the case is built.
 To see if it has  worked you can change directory to the case and watch the
 .elm.h0. files appear.
 
-
-To visualize results from the run go to your jupyter notebook lesson 3. There are both
-python and R versions of this lesson so use whichever one you feel more comfortable with. 
