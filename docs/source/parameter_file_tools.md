@@ -11,7 +11,7 @@ To go the other way, and generate a .nc file from a .cdl file you've been editin
 can use ncgen like this: 
 
 ```
-ncgen -o fates_params_default.cdl fates_params_default.nc
+ncgen -o fates_params_default.nc fates_params_default.cdl
 ```
 
 If you open the .cdl file you just generated you'll see that it has 12 PFTs listed 
@@ -40,7 +40,7 @@ and provide three arguments, --fin  - the original parameter file, --fout - the 
 file, and --pft-indices - the index of the PFTs that  we want, in this case 1. 
 
 ```
-./FatesPFTIndexSwapper.py --fin=fates_params_default.nc --fout=fates_params_1pft.nc --pft-indices=1
+./FatesPFTIndexSwapper.py --fin=fates_params_default.nc --fout=fates_params_default-1pft.nc --pft-indices=1
 ```
 
 This generates a parameter file with a single PFT. Try converting the .nc file to a .cdl file you can
