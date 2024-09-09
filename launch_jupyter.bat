@@ -7,7 +7,7 @@ set /p tempurl=<tempurl.txt
 set "url=%tempurl: =%"
 
 echo opening %url%
-start "" "%url"
+start "" "%url%"
 
 del tempurl.txt
 
