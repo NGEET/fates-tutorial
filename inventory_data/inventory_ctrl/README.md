@@ -1,0 +1,1 @@
+Place your inventory control file in this directory.  It should have the following filename format: "fates_<site>_inventory_ctrl".  Replace <site> in the preceeding with the name that matches your site data.

@@ -10,8 +10,8 @@ services:
     image: ngeetropics/data-drivers-domains-ctrl:latest
     volumes:
       - bci_inventory:/bci_inventory
-      - site_data:/site_data
-      - inventory_ctrl:/inventory_ctrl
+      # - site_data:/site_data
+      # - inventory_ctrl:/inventory_ctrl
   landmodel:
     image: ngeetropics/elm-builds:elm_v3.0.0-fates_sci.1.76.4_api.35.1.0-latest
     container_name: elm-fates
@@ -30,12 +30,18 @@ services:
       - type: bind
         source: ${INPUT_DATA}
         target: /inventorydata/userdata
+      - type: bind
+        source: ${INPUT_DATA}/inventory_ctrl
+        target: /inventorydata/inventory_ctrl
+      - type: bind
+        source: ${INPUT_DATA}/site_data
+        target: /sitedata
       # volumes that are hidden from the user directly
       - modeloutput:/output
       - elm_inputdata:/inputdata
       - bci_inventory:/inventorydata/bci
-      - site_data:/sitedata
-      - inventory_ctrl:/inventorydata/inventory_ctrl
+      # - site_data:/sitedata
+      # - inventory_ctrl:/inventorydata/inventory_ctrl
   notebook:
     image: ngeetropics/fates-tutorial-jupyter:latest
     container_name: tutorial-notebook
@@ -50,7 +56,7 @@ services:
         source: fates-tutorial-jupyter-book/
         target: /home/${NB_USER}/notebooks
       - type: bind
-        source: run_scripts/
+        source: tools/
         target: /home/${NB_USER}/scripts
       - type: bind
         source: param_files/
@@ -63,6 +69,6 @@ services:
 volumes:
   modeloutput:
   elm_inputdata:
-  site_data:
+  # site_data:
   bci_inventory:
-  inventory_ctrl:
+  # inventory_ctrl:
